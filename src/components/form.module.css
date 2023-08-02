@@ -1,0 +1,50 @@
+.form {
+  display: grid;
+  text-decoration: none;
+  gap: 1.5vh;
+  color: black;
+  border-radius: 4px;
+  align-items: center;
+  margin-top: 3vh;
+  border: none;
+}
+
+.form textarea,
+.form input {
+  font-family: "Oswald", sans-serif;
+  border-radius: 4px;
+  font-size: 2.7vh;
+  padding-left: 0.6vh;
+}
+.form textarea {
+  height: 25vh;
+}
+
+.buttonForm {
+  border: none;
+  margin-top: 2vh;
+  background-color: darkslategray;
+  font-family: "Oswald", sans-serif;
+  font-size: 2.7vh;
+  padding: 1vh;
+  color: #faebd7;
+  width: 50%;
+  justify-self: end;
+  border-radius: 5px;
+}
+
+.buttonForm:hover{
+background-color:  grey;
+cursor: pointer;}
+
+@media (min-width: 768px) {
+ 
+  .buttonForm {
+    padding: 0.5vh;
+  }
+
+  .form {
+    margin-top: 5%;
+    gap: 2vh 0 2vh 0;
+  }
+}

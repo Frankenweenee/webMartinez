@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Voltaire&family=Wire+One&family=Lobster&family=Neonderthaw&display=swap");
+/* -------------- structure ------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #06131a;
+    color: azure;}
+
+img.small {
+    width: 5vw;
+    height: 5vh;
+}
+
+img.medium {
+    margin: 2vh 0 2vh 0;
+    width: 100%;
+}
+
+h2 {
+    font-family: "Antonio", sans-serif;
+    color: bisque;
+    text-decoration: none;
+    font-size: 23vw;
+}
+
+.hiddenContainer {
+    overflow: hidden;
+}
+
+/* -----estilos de la pagina principal  del inicio ----*/
+
+.initBackgroundContainer {
+    height: 100%;
+    background-image: url(../img/background.mobile.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.initContentContainer {
+    width: 95%;
+    height: 85vh;
+    margin: auto;
+    display: grid;
+    align-content: end
+    ;
+}
+
+/*------ pagina about  ------ */
+
+.aboutMainContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.titleAboutMeContainer {
+    display: flex;
+    justify-content: end;
+    width: fit-content;
+}
+
+.aboutContentContainer {
+    display: flex;
+    flex-direction: column;
+    font-family: "Wire one", sans-serif;
+    font-size: 5vh;
+    align-items: center;
+}
+
+.mediaQueryInverseAbout {
+    flex-direction: column-reverse;
+}
+
+.titleSkillInAbout {
+    color: burlywood;
+    font-size: 6vh;
+    padding-bottom: 3vh;
+    border: 1vh;
+    width: fit-content;
+}
+
+/* ----- estilos de pagina de portafolio ----- */
+
+.worksMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+}
+
+.worksPortfolioLinkContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.worksPortfolioLinkContainer p {
+    font-family: "Oswald", sans-serif;
+    font-size: 3.5vh;
+}
+
+.worksButton {
+    font-family: "Fjalla One", sans-serif;
+    color: burlywood;
+    margin-top: 2vh;
+    gap: 2vh;
+    text-decoration: none;
+    font-size: 8vh;
+    background: none;
+    border: none;
+    white-space: nowrap;
+
+}
+
+.worksButton:hover {
+    cursor: pointer;
+    color: bisque;
+}
+
+.worksExplanationLine {
+    white-space: nowrap;
+}
+
+/* ------estilos de contacto ------ */
+
+.contactMainContainer {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-around;
+}
+
+
+.iconLinkNetworksContainer {
+    display: flex;
+    flex-direction: column;
+  
+
+}
+
+.divIconLinkNetworks {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: center;
+}
+
+.buttonLinkNetworks {
+    font-family: "Wire One", sans-serif;
+    font-size: 4vh;
+    text-decoration: none;
+    color: #faebd7;
+    align-items: center;
+}
+
+.buttonLinkNetworks:hover {
+    color: burlywood;
+    cursor: pointer;
+}
+
+.reactIcons {
+    color: #faebd7;
+    font-size: 4vh;
+}
+
+@media (min-width: 768px) {
+
+    /* ---- init page ---- */
+
+    .initBackgroundContainer {
+        height: 100vh;
+        background-image: url(../img/fondo2.jpg);
+    }
+
+    h2 {
+        font-size: 11vw;
+    }
+
+    /* ---- about ---- */
+
+    .aboutContentContainer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    img.medium {
+        width: 35vw;
+        margin: 0 2vw 0 2vw;
+    }
+
+    /* ---- works ---- */
+
+    .worksContentContainer {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        width: 100%;
+        align-items: center;
+    }
+
+    /* ---- contact ----*/
+
+
+    .contactMainContainer {
+        display: grid;
+        grid-template-columns: 20vw 40vw;
+    
+    }
+
+    .iconLinkNetworksContainer {
+        justify-content: space-around;
+        margin-right: 5vw;
+
+        
+    }
+
+    .buttonLinkNetworks {
+        font-size: 6vh;
+    }
+
+    .reactIcons {
+        font-size: 6vh;
+    }
+}
