@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Voltaire&family=Wire+One&family=Lobster&family=Neonderthaw&display=swap");
+
+.prueba {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutBallonContainer {
+    position: absolute;
+    z-index: 2;
+}
+
+.handWriteBallonContainer {
+    height: 18vh;
+    width: 90vw;
+    padding: 2vh 0 0 5vw;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 3vh;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+}
+
+.backgroundImageSectionAbout {
+    width: 90vw;
+}
+
+@media (min-width: 768px){
+    .handWriteBallonContainer {
+        font-size: 4vh;
+        width: 30vw;
+
+    }
+
+    .backgroundImageSectionAbout {
+        height: 50vw
+    }
+}

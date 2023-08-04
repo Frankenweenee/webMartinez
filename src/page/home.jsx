@@ -1,16 +1,26 @@
+//react libraries
+import { useState, useEffect, useRef } from "react";
+//css
 import style from "./home.module.css";
-import image1 from "../img/image1.jpg";
-import fondo1 from "../img/fondo1.jpg";
+//images
+import backgroundContainer from "../img/container1.svg";
+import backgroundContainer2 from "../img/container2.svg";
+import backgroundContainer3 from "../img/container3.svg";
+import backgroundContainerOblong from "../img/containerOblong.svg";
+import backgroundContainerOblong2 from "../img/containerOblong2.svg";
+import backgroundContainerOblong3 from "../img/containerOblong3.svg";
+import arrow3 from "../img/arrow3.svg";
+import arrow4 from "../img/arrow4.svg";
+import cancelLine from "../img/cancel.svg";
+//icons
 import {
     PiEnvelopeLight,
     PiLinkedinLogoLight,
     PiGithubLogoLight,
 } from "react-icons/pi";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useState, useEffect, useRef } from "react";
-import { Form } from "../components/Form";
 
+//components
+import { Form } from "../components/Form";
 import { WorksWide } from "../components/worksPopUps";
 import {
     opacityEffectToHide,
@@ -18,19 +28,27 @@ import {
     translateXgsapEffect,
     translateYgsapEffect,
     bounceUpGsapEffect,
+    bounceUpGsapEffectNoTrigger,
 } from "../components/gsapEffects/gsapEffect";
-
-gsap.registerPlugin(ScrollTrigger);
+import { BallonContainer } from "../components/ballonContainer";
+import pdf from "../pdfCv/franciscoMartinezCv.pdf";
+//import { SayHello } from "../components/sayHello";
 
 export function Home() {
-    /* -- query tamaño pantalla -- */
-    
+    /* -- hello Word -- */
+
+    console.log(
+        "%c hecho con muchisimo amor por: EX MACHINA",
+        "background:red; color: white;"
+    );
 
     const mediaQuery = window.matchMedia("(max-width: 768px)");
 
     /* -- referencences and animations -- */
 
     const initContainerRef = useRef(null);
+    const titleFirstScreenRefA = useRef(null);
+    const titleFirstScreenRefB = useRef(null);
     const titleAboutMeRef = useRef(null);
     const contactTitleRef = useRef(null);
     const contactTriggerRef = useRef(null);
@@ -49,6 +67,16 @@ export function Home() {
             posEnd: "center 30%",
         };
         opacityEffectToHide(mainContainerBackgroundEffect);
+
+        const firstTitleBounceEfectA = {
+            refElementToMove: titleFirstScreenRefA.current,
+        };
+        bounceUpGsapEffectNoTrigger(firstTitleBounceEfectA);
+
+        const firstTitleBounceEfectB = {
+            refElementToMove: titleFirstScreenRefB.current,
+        };
+        bounceUpGsapEffectNoTrigger(firstTitleBounceEfectB);
 
         const aboutTitleEffect = {
             refElementToMove: titleAboutMeRef.current,
@@ -109,7 +137,37 @@ export function Home() {
         }
     }, []);
 
-    /* -- botones del portfolio --*/
+    const firtsAboutContainer ={
+        mediaQuery: mediaQuery,
+        paragraph: 'Tomo conocimientos UI/UX para crear una experiencia, analizo las posibilides, creo bocetos y estructuras.',
+        wideContainer: backgroundContainerOblong2,
+        mobileContainer: backgroundContainerOblong2}
+
+       const secondAboutContainer ={
+            mediaQuery: mediaQuery,
+            paragraph: 'Hago uso de tecnologías como:.\
+             -JavaScript    -HTML.\
+             -SASS-Css      -Python.\
+             -Django-Rest',
+            wideContainer: backgroundContainerOblong3,
+            mobileContainer: backgroundContainer3}
+
+            const thirdAboutContainer ={
+                mediaQuery: mediaQuery,
+                paragraph: 'Hago uso de tecnologías como:.\
+                 -JavaScript    -HTML.\
+                 -SASS-Css      -Python.\
+                 -Django-Rest',
+                wideContainer: backgroundContainerOblong3,
+                mobileContainer: backgroundContainer3}
+            
+            const theParagraph ={
+                paragraph: 'Hago uso de tecnologías como:.\
+                <li>JavaScript</li>    -HTML.\
+                <li>SASS-Css</li>     -Python.\
+                -Django-Rest',}
+
+    /* -- portfolio buttons  --*/
 
     const [showWorks, setShowWorks] = useState({ prop1: false, prop2: "" });
 
@@ -136,66 +194,63 @@ export function Home() {
     const handleClickCamper = () => {
         setShowWorks({ prop1: true, prop2: camperWord });
     };
-    const inverseAboutContainer =
-        style.aboutContentContainer + " " + style.mediaQueryInverseAbout;
+
     return (
         <>
-        <p>{window.innerWidth}</p>
             <div
                 className={style.initBackgroundContainer}
                 ref={initContainerRef}>
                 <div className={style.initContentContainer}>
-                    <h2>
-                        <span>Designer</span> &
-                        <br />
-                        Developer
-                    </h2>
+                    <div className={style.hiddenContainer}>
+                        <h2
+                            className={style.designDeveloperTitle}
+                            ref={titleFirstScreenRefA}>
+                            Designer &
+                        </h2>
+                    </div>
+                    <div className={style.hiddenContainer}>
+                        <h2
+                            className={style.designDeveloperTitle}
+                            ref={titleFirstScreenRefB}>
+                            {" "}
+                            Developer
+                        </h2>
+                    </div>
                 </div>
             </div>
             <div className={style.aboutMainContainer}>
-                <div className={style.titleAboutMeContainer}>
-                    <h2 ref={titleAboutMeRef}>.ABOUT ME</h2>
+                <div className={style.titleAndPharseFullContainer}>
+                    <div className={style.titleAboutMeContainer}>
+                        <h2 ref={titleAboutMeRef}>.ABOUT ME</h2>
+                        <img
+                            className={style.cancelLine}
+                            src={cancelLine}
+                        />
+                    </div>
+                    <div className={style.hacerPorTiContainer}>
+                        <p className={style.handWriteToAddIdeas}>
+                            Que puedo hacer yo por ti!
+                        </p>
+                    </div>
                 </div>
                 <div className={style.aboutContentContainer}>
-                    <img
-                        ref={firstImageAboutSectionRef}
-                        className={style.medium}
-                        src={image1}
-                        alt="Una escena de de un café donde se ve una mesa y encima un ordenador portatil"
-                    />
-                    <div
-                        className={style.paragraphContainer}
-                        ref={firstParagraphContainerAboutRef}>
-                        <h4 className={style.titleSkillInAbout}>CREATIVIDAD</h4>
-                        <p>
-                            Siempre creando. Y tomo creatividad como el proceso
-                            desde que se toma una idea o problema, se
-                            transiciona a través de tomar diferentes
-                            herramientas para llegar a una solución intentanto
-                            de que sea lo más eficaz y eficiente posible.
-                        </p>
-                    </div>
+                    <BallonContainer props={firtsAboutContainer}/>
+                    <img className={style.arrowsAbout} src={arrow4} />
+                    <BallonContainer props={secondAboutContainer}/>
+                    <img className={style.arrowsAbout} src={arrow3} alt="" />
+                    <BallonContainer props={thirdAboutContainer} paragraph={theParagraph.paragraph}/>
+                    <img className={style.arrowsAbout} src={arrow3} alt="" />
+                    
                 </div>
-                <div className={inverseAboutContainer}>
-                    <div
-                        className={style.paragraphContainer}
-                        ref={secondParagraphContainerAboutRef}>
-                        <h4 className={style.titleSkillInAbout}>CODING</h4>
+                <div className={style.aboutContentBottomContainer}>
+                    <div className={style.designerExplanationContainer}>
                         <p>
-                            Encuentro fasciante el mundo desde donde comandos
-                            abstractos se convierten en elementos bellos y
-                            estético o elementoos funcionales, aplicando
-                            distintas tecnologías, así como conceptos de diseño
-                            UX/UI tanto de <strong>FRONTEND</strong> como en
-                            <strong>BACKEND</strong>
+                            Pues eso, tienes un diseñador gráfico e industrial
+                            con conocimientos en programación frontend y
+                            backend. ¿quieres saber más de lo que hago?
+                            <br />O si prefieres puedes descargar mi cv en .pdf{" "}
                         </p>
                     </div>
-                    <img
-                        className={style.medium}
-                        src={fondo1}
-                        alt=""
-                        ref={secondImageAboutSectionRef}
-                    />
                 </div>
             </div>
             <div className={style.worksMainContainer}>

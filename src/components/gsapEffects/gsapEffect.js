@@ -76,7 +76,7 @@ export function bounceUpGsapEffect(options) {
         options.refElementToMove,
         { y: 500 },
         {
-            duration: 1.5,
+            duration: 2,
             ease: "power3.out",
             y: 0,
             scrollTrigger: {
@@ -87,6 +87,18 @@ export function bounceUpGsapEffect(options) {
                     fontSize: "2rem",
                 },*/
             },
+        }
+    );
+}
+
+export function bounceUpGsapEffectNoTrigger(options) {
+    gsap.fromTo(
+        options.refElementToMove,
+        { y: 500 },
+        {
+            duration: 1.5,
+            ease: "power3.out",
+            y: 0,
         }
     );
 }

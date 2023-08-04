@@ -5,6 +5,8 @@ import { PiGithubLogoThin } from "react-icons/pi";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import imagen1 from "../img/imagen1.mobile.jpg";
 
+Modal.setAppElement("#root");
+
 export function WorksWide({ mediaQuery }) {
     const [modalAbierto, setModalAbierto] = useState(false);
 
