@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Voltaire&family=Wire+One&family=Lobster&family=Neonderthaw&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Voltaire&family=Wire+One&family=Lobster&family=Neonderthaw&display=swap");
 /* -------------- structure ------------- */
 
 * {
@@ -9,7 +9,8 @@
 
 body {
     background-color: #06131a;
-    color: azure;}
+    color: azure;
+}
 
 img.small {
     width: 5vw;
@@ -30,12 +31,15 @@ h2 {
 
 .hiddenContainer {
     overflow: hidden;
+    width: fit-content;
+    height: fit-content;
 }
 
 /* -----estilos de la pagina principal  del inicio ----*/
 
 .initBackgroundContainer {
-    height: 100%;
+    height: 100vh;
+    width: auto;
     background-image: url(../img/background.mobile.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -43,12 +47,14 @@ h2 {
 
 .initContentContainer {
     width: 95%;
-    height: 85vh;
+    height: 90vh;
     margin: auto;
     display: grid;
-    align-content: end
-    ;
+    align-content: end;
 }
+.designDeveloperTitle{
+    font-size: 23vw;}
+
 
 /*------ pagina about  ------ */
 
@@ -61,16 +67,41 @@ h2 {
 
 .titleAboutMeContainer {
     display: flex;
-    justify-content: end;
     width: fit-content;
+}
+
+.cancelLine {
+    height: 15vh;
+    position: absolute;
+    width: 85vw;
+}
+.hacerPorTiContainer {
+    width: 90%;
+    margin: auto;
+}
+.handWriteToAddIdeas {
+    font-family: "Shadows Into Light", cursive;
+    font-size: 4vh;
+    white-space: nowrap;
+}
+
+.arrowsAbout {
+    height:5vh;
 }
 
 .aboutContentContainer {
     display: flex;
     flex-direction: column;
-    font-family: "Wire one", sans-serif;
-    font-size: 5vh;
     align-items: center;
+    margin-top: 3vh;
+}
+
+.aboutContentBottomContainer {
+    display: flex;
+    font-family: "Wire one", sans-serif;
+    font-size: 4vh;
+    justify-content: end;
+    margin-top: 5vw;
 }
 
 .mediaQueryInverseAbout {
@@ -83,6 +114,9 @@ h2 {
     padding-bottom: 3vh;
     border: 1vh;
     width: fit-content;
+}
+.designerExplanationContainer{
+    width: 90vw;
 }
 
 /* ----- estilos de pagina de portafolio ----- */
@@ -117,7 +151,6 @@ h2 {
     background: none;
     border: none;
     white-space: nowrap;
-
 }
 
 .worksButton:hover {
@@ -140,12 +173,9 @@ h2 {
     justify-content: space-around;
 }
 
-
 .iconLinkNetworksContainer {
     display: flex;
     flex-direction: column;
-  
-
 }
 
 .divIconLinkNetworks {
@@ -174,6 +204,10 @@ h2 {
 }
 
 @media (min-width: 768px) {
+    .handWriteToAddIdeas {
+        margin: 7vh 0 0 10vw;
+        font-size: 6vh;
+    }
 
     /* ---- init page ---- */
 
@@ -181,9 +215,11 @@ h2 {
         height: 100vh;
         background-image: url(../img/fondo2.jpg);
     }
+    .designDeveloperTitle{
+        font-size: 16vw;}
 
     h2 {
-        font-size: 11vw;
+        font-size: 7vw;
     }
 
     /* ---- about ---- */
@@ -191,12 +227,52 @@ h2 {
     .aboutContentContainer {
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
     }
 
-    img.medium {
-        width: 35vw;
-        margin: 0 2vw 0 2vw;
+    .titleAndPharseFullContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
+
+    .cancelLine {
+        position: absolute;
+        height: 30vh;
+        width: 41vw;
+    }
+    .hacerPorTiContainer {
+        width: fit-content;
+        margin: auto;
+    }
+/*
+    .handWriteBallonContainer {
+        font-size: 5vh;
+
+    }
+
+    .handWriteBallonContainer2 {
+        font-size: 4vh;
+        width: 25vw;
+    }
+
+    .backgroundImageSectionAbout {
+        height: 25vh;
+    }
+
+    .backgroundImageSectionAbout2 {
+        height: 40vh;
+    }
+*/
+    .arrowsAbout {
+        transform: rotate(-90deg);
+        height: 8vw;
+    }
+    .designerExplanationContainer{
+    width: 50vw;
+justify-self: end;}
+
+  
 
     /* ---- works ---- */
 
@@ -209,18 +285,14 @@ h2 {
 
     /* ---- contact ----*/
 
-
     .contactMainContainer {
         display: grid;
         grid-template-columns: 20vw 40vw;
-    
     }
 
     .iconLinkNetworksContainer {
         justify-content: space-around;
         margin-right: 5vw;
-
-        
     }
 
     .buttonLinkNetworks {
