@@ -3,12 +3,6 @@ import { useState, useEffect, useRef } from "react";
 //css
 import style from "./home.module.css";
 //images
-import backgroundContainer from "../img/container1.svg";
-import backgroundContainer2 from "../img/container2.svg";
-import backgroundContainer3 from "../img/container3.svg";
-import backgroundContainerOblong from "../img/containerOblong.svg";
-import backgroundContainerOblong2 from "../img/containerOblong2.svg";
-import backgroundContainerOblong3 from "../img/containerOblong3.svg";
 import arrow3 from "../img/arrow3.svg";
 import arrow4 from "../img/arrow4.svg";
 import cancelLine from "../img/cancel.svg";
@@ -22,21 +16,12 @@ import {
 //components
 import { Form } from "../components/Form";
 import { WorksWide } from "../components/worksPopUps";
-import {
-    opacityEffectToHide,
-    opacityEffectToShow,
-    translateXgsapEffect,
-    translateYgsapEffect,
-    bounceUpGsapEffect,
-    bounceUpGsapEffectNoTrigger,
-} from "../components/gsapEffects/gsapEffect";
-import { BallonContainer } from "../components/ballonContainer";
+import * as effect from "../components/gsapEffects/gsapEffect";
 import pdf from "../pdfCv/franciscoMartinezCv.pdf";
-//import { SayHello } from "../components/sayHello";
+import { SayHello } from "../components/sayHello";
 
 export function Home() {
     /* -- hello Word -- */
-
     console.log(
         "%c hecho con muchisimo amor por: EX MACHINA",
         "background:red; color: white;"
@@ -46,135 +31,104 @@ export function Home() {
 
     /* -- referencences and animations -- */
 
+    // init container
     const initContainerRef = useRef(null);
     const titleFirstScreenRefA = useRef(null);
     const titleFirstScreenRefB = useRef(null);
+    // about container
     const titleAboutMeRef = useRef(null);
-    const contactTitleRef = useRef(null);
-    const contactTriggerRef = useRef(null);
-    const firstImageAboutSectionRef = useRef(null);
-    const firstParagraphContainerAboutRef = useRef(null);
-    const secondImageAboutSectionRef = useRef(null);
-    const secondParagraphContainerAboutRef = useRef(null);
+    const cancelLineRef = useRef(null);
+    const hacerPorTiRef = useRef(null);
+    const firstBallonRef = useRef(null);
+    const secondBallonRef = useRef(null);
+    const thirdBallonRef = useRef(null);
+    const firstArrowRef = useRef(null);
+    const secondArrowRef = useRef(null);
+    //works container
+    const titleWorksTriggerRef = useRef(null);
     const titleWorksRef = useRef(null);
+    // contact container
+    const contactTitleRef = useRef(null);
     const emailFormAndLinksRef = useRef(null);
 
     useEffect(() => {
+
+        //init container
+
+        const containerBeginOpacity ={
+        refElementToMove: initContainerRef.current,
+        firstTitle: titleFirstScreenRefA.current,
+        secondTitle: titleFirstScreenRefB.current
+        }
+        effect.opacityEffectToShow(containerBeginOpacity)
+
         const mainContainerBackgroundEffect = {
             refElementToMove: initContainerRef.current,
             refTrigger: titleAboutMeRef.current,
             posStart: "center 40%",
             posEnd: "center 30%",
         };
-        opacityEffectToHide(mainContainerBackgroundEffect);
+        effect.opacityEffectToHide(mainContainerBackgroundEffect);
 
-        const firstTitleBounceEfectA = {
-            refElementToMove: titleFirstScreenRefA.current,
-        };
-        bounceUpGsapEffectNoTrigger(firstTitleBounceEfectA);
-
-        const firstTitleBounceEfectB = {
-            refElementToMove: titleFirstScreenRefB.current,
-        };
-        bounceUpGsapEffectNoTrigger(firstTitleBounceEfectB);
+        // about container
 
         const aboutTitleEffect = {
             refElementToMove: titleAboutMeRef.current,
             refTrigger: titleAboutMeRef.current,
             posStart: "center 85%",
+            cancelLine: cancelLineRef.current,
+            hacerPorTi: hacerPorTiRef.current,
+            opacityTrigger: titleAboutMeRef.current,
+            firstBallon: firstBallonRef.current,
+            firstArrow: firstArrowRef.current,
+            secondBallon: secondBallonRef.current,
+            secondArrow: secondArrowRef.current,
+            thirdBallon: thirdBallonRef.current,
         };
-        translateXgsapEffect(aboutTitleEffect);
+        effect.translateAboutEffect(aboutTitleEffect);
 
-        const aboutFirstImageBounceEfect = {
-            refElementToMove: firstImageAboutSectionRef.current,
-            refTrigger: titleAboutMeRef.current,
-            posStart: "110% 80%",
-        };
-        bounceUpGsapEffect(aboutFirstImageBounceEfect);
-
-        const firstContainerParagraphInAbout = {
-            refElementToMove: firstParagraphContainerAboutRef.current,
-            refTrigger: firstParagraphContainerAboutRef.current,
-            posStart: "top 80%",
-        };
-        opacityEffectToShow(firstContainerParagraphInAbout);
-
-        const aboutSecondImageBounceEfect = {
-            refElementToMove: secondImageAboutSectionRef.current,
-            refTrigger: firstParagraphContainerAboutRef.current,
-            posStart: "bottom 80%",
-        };
-        bounceUpGsapEffect(aboutSecondImageBounceEfect);
-
-        const secondContainerParagraphInAbout = {
-            refElementToMove: secondParagraphContainerAboutRef.current,
-            refTrigger: secondParagraphContainerAboutRef.current,
-            posStart: "top 80%",
-        };
-        opacityEffectToShow(secondContainerParagraphInAbout);
+        //works container
 
         const worksTitleEffect = {
             refElementToMove: titleWorksRef.current,
-            refTrigger: secondParagraphContainerAboutRef.current,
+            refTrigger: titleWorksTriggerRef.current,
             posStart: "bottom 70%",
         };
-        bounceUpGsapEffect(worksTitleEffect);
+        effect.bounceUpGsapEffect(worksTitleEffect);
+
+        //contact container
 
         if (mediaQuery.matches) {
             const contactTitleMobileEffect = {
                 refElementToMove: contactTitleRef.current,
-                refTrigger: contactTriggerRef.current,
+                refTrigger: contactTitleRef.current,
                 posStart: "bottom 95%",
             };
-            translateXgsapEffect(contactTitleMobileEffect);
+            effect.translateXgsapEffect(contactTitleMobileEffect);
         } else {
             const contactTitleWideEffect = {
                 refElementToMove: contactTitleRef.current,
                 refTrigger: emailFormAndLinksRef.current,
                 posStart: "center 60%",
             };
-            translateYgsapEffect(contactTitleWideEffect);
+            effect.translateYgsapEffect(contactTitleWideEffect);
         }
     }, []);
 
-    const firtsAboutContainer ={
-        mediaQuery: mediaQuery,
-        paragraph: 'Tomo conocimientos UI/UX para crear una experiencia, analizo las posibilides, creo bocetos y estructuras.',
-        wideContainer: backgroundContainerOblong2,
-        mobileContainer: backgroundContainerOblong2}
+    /* -- about buttons -- */
 
-       const secondAboutContainer ={
-            mediaQuery: mediaQuery,
-            paragraph: 'Hago uso de tecnologías como:.\
-             -JavaScript    -HTML.\
-             -SASS-Css      -Python.\
-             -Django-Rest',
-            wideContainer: backgroundContainerOblong3,
-            mobileContainer: backgroundContainer3}
+    const handleClickDownloadCv = ()=>{
+        
+    }
 
-            const thirdAboutContainer ={
-                mediaQuery: mediaQuery,
-                paragraph: 'Hago uso de tecnologías como:.\
-                 -JavaScript    -HTML.\
-                 -SASS-Css      -Python.\
-                 -Django-Rest',
-                wideContainer: backgroundContainerOblong3,
-                mobileContainer: backgroundContainer3}
-            
-            const theParagraph ={
-                paragraph: 'Hago uso de tecnologías como:.\
-                <li>JavaScript</li>    -HTML.\
-                <li>SASS-Css</li>     -Python.\
-                -Django-Rest',}
-
-    /* -- portfolio buttons  --*/
+    /* -- portfolio buttons --*/
 
     const [showWorks, setShowWorks] = useState({ prop1: false, prop2: "" });
 
     const virtualWaiter = <WorksWide mediaQuery={mediaQuery} />;
 
     const elCamino = mediaQuery.matches ? (
-        <p>soy el camino pequeño</p>
+        <p>soy una chorrada</p>
     ) : (
         <p>soy el camino grande</p>
     );
@@ -194,6 +148,11 @@ export function Home() {
     const handleClickCamper = () => {
         setShowWorks({ prop1: true, prop2: camperWord });
     };
+  /* -- writer machne effect -- */
+
+    const phrase = {
+        phrase: "Y mucho más, pero eso... eso es otra historia.",
+    };
 
     return (
         <>
@@ -212,49 +171,103 @@ export function Home() {
                         <h2
                             className={style.designDeveloperTitle}
                             ref={titleFirstScreenRefB}>
-                            {" "}
                             Developer
                         </h2>
                     </div>
+                </div>
+                <div className={style.noPolitePhraseContainer}>
+                    <SayHello phrase={phrase} />
                 </div>
             </div>
             <div className={style.aboutMainContainer}>
                 <div className={style.titleAndPharseFullContainer}>
                     <div className={style.titleAboutMeContainer}>
-                        <h2 ref={titleAboutMeRef}>.ABOUT ME</h2>
-                        <img
-                            className={style.cancelLine}
-                            src={cancelLine}
-                        />
+                        <div className={style.hiddenContainer}>
+                            <div>
+                                <img
+                                    className={style.cancelLine}
+                                    src={cancelLine} ref={cancelLineRef}
+                                />
+                            </div>
+                            <h2 ref={titleAboutMeRef}>.ABOUT ME</h2>
+                        </div>
                     </div>
-                    <div className={style.hacerPorTiContainer}>
+                    <div
+                        className={style.hacerPorTiContainer}
+                        ref={hacerPorTiRef}>
                         <p className={style.handWriteToAddIdeas}>
-                            Que puedo hacer yo por ti!
+                            ¡Que puedo hacer YO por ti!
                         </p>
                     </div>
                 </div>
                 <div className={style.aboutContentContainer}>
-                    <BallonContainer props={firtsAboutContainer}/>
-                    <img className={style.arrowsAbout} src={arrow4} />
-                    <BallonContainer props={secondAboutContainer}/>
-                    <img className={style.arrowsAbout} src={arrow3} alt="" />
-                    <BallonContainer props={thirdAboutContainer} paragraph={theParagraph.paragraph}/>
-                    <img className={style.arrowsAbout} src={arrow3} alt="" />
-                    
+                    <div
+                        className={style.backgroundContainerAboutOne}
+                        ref={firstBallonRef}>
+                        <p className={style.handWrite}>
+                            Tomo conocimientos <b>UI/UX</b> para crear una experiencia,
+                            analizo las posibilides, creo bocetos y estructuras.
+                        </p>
+                    </div>
+                    <img
+                        ref={firstArrowRef}
+                        className={style.arrowsAbout}
+                        src={arrow4}
+                        alt="flecha"
+                    />
+                    <div
+                        className={style.backgroundContainerAboutTwo}
+                        ref={secondBallonRef}>
+                        <p className={style.handWrite}>
+                            Hago uso de tecnologías como:
+                            <br />
+                            <br />
+                            <li>JavaScript</li>
+                            <li>HTML</li>
+                            <li>SASS-Css</li>
+                            <li>Python</li>
+                            <li>Django-Rest</li>
+                        </p>
+                    </div>
+                    <img
+                        ref={secondArrowRef}
+                        className={style.arrowsAbout}
+                        src={arrow3}
+                        alt={"flecha"}
+                    />
+                    <div
+                        className={style.backgroundContainerAbouThree}
+                        ref={thirdBallonRef}>
+                        <p className={style.handWrite}>
+                            y lo que obtienes es un resultado eficiente único e
+                            innolvidable
+                        </p>
+                    </div>
                 </div>
                 <div className={style.aboutContentBottomContainer}>
                     <div className={style.designerExplanationContainer}>
                         <p>
                             Pues eso, tienes un diseñador gráfico e industrial
                             con conocimientos en programación frontend y
-                            backend. ¿quieres saber más de lo que hago?
-                            <br />O si prefieres puedes descargar mi cv en .pdf{" "}
+                            backend.{' '}
+                            <a href={'/MiCv'} className={style.buttonToCv}>
+                                 ¿quieres saber más de lo que hago?
+                            </a>
+                            <br />O si prefieres puedes descargar{' '}
+                            <button onClick={handleClickDownloadCv} className={style.buttonToCv}>
+                                mi cv
+                            </button>{" "}
+                            en .pdf
                         </p>
                     </div>
                 </div>
             </div>
             <div className={style.worksMainContainer}>
-                <h2 ref={titleWorksRef}>.WORKS</h2>
+                <div
+                    className={style.hiddenContainer}
+                    ref={titleWorksTriggerRef}>
+                    <h2 ref={titleWorksRef}>.WORKS</h2>
+                </div>
                 <div className={style.worksContentContainer}>
                     <div>{showWorks.prop1 && showWorks.prop2}</div>
                     <div className={style.worksPortfolioLinkContainer}>
@@ -292,7 +305,7 @@ export function Home() {
                 </div>
             </div>
             <div className={style.contactMainContainer}>
-                <div className={style.hiddenContainer} ref={contactTriggerRef}>
+                <div className={style.hiddenContactContainer}>
                     <h2 ref={contactTitleRef}>.CONTACTO</h2>
                 </div>
                 <div

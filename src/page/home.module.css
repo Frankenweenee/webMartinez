@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Voltaire&family=Wire+One&family=Lobster&family=Neonderthaw&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Wire+One&display=swap");
 /* -------------- structure ------------- */
 
 * {
@@ -12,49 +12,57 @@ body {
     color: azure;
 }
 
-img.small {
-    width: 5vw;
-    height: 5vh;
-}
-
-img.medium {
-    margin: 2vh 0 2vh 0;
-    width: 100%;
-}
-
 h2 {
     font-family: "Antonio", sans-serif;
     color: bisque;
-    text-decoration: none;
     font-size: 23vw;
+    z-index: 1;
+    white-space: nowrap;
+}
+html {
+    scroll-snap-type: y mandatory;
+}
+
+button {
+    all: unset;
 }
 
 .hiddenContainer {
+    position: relative;
     overflow: hidden;
-    width: fit-content;
+    width: 100%;
     height: fit-content;
+    padding-right: 5vw;
 }
 
 /* -----estilos de la pagina principal  del inicio ----*/
 
 .initBackgroundContainer {
     height: 100vh;
-    width: auto;
     background-image: url(../img/background.mobile.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .initContentContainer {
     width: 95%;
-    height: 90vh;
+    height: 80vh;
     margin: auto;
     display: grid;
     align-content: end;
 }
-.designDeveloperTitle{
-    font-size: 23vw;}
 
+.designDeveloperTitle {
+    font-size: 23vw;
+}
+
+.noPolitePhraseContainer {
+    width: 80vw;
+    margin-left: 2.5%;
+    transform: rotate(-2deg);
+}
 
 /*------ pagina about  ------ */
 
@@ -63,6 +71,8 @@ h2 {
     display: flex;
     flex-direction: column;
     margin: auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .titleAboutMeContainer {
@@ -74,19 +84,20 @@ h2 {
     height: 15vh;
     position: absolute;
     width: 85vw;
+    z-index: 2;
 }
+
 .hacerPorTiContainer {
     width: 90%;
-    margin: auto;
+    margin-left: 4vw;
 }
+
 .handWriteToAddIdeas {
     font-family: "Shadows Into Light", cursive;
     font-size: 4vh;
     white-space: nowrap;
-}
-
-.arrowsAbout {
-    height:5vh;
+    color: yellow;
+    transform: rotate(-1deg);
 }
 
 .aboutContentContainer {
@@ -94,6 +105,27 @@ h2 {
     flex-direction: column;
     align-items: center;
     margin-top: 3vh;
+}
+
+.backgroundContainerAboutOne {
+    background-image: url("../img/container4.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.backgroundContainerAboutTwo {
+    background-image: url("../img/container3.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.backgroundContainerAbouThree {
+    background-image: url("../img/container2.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .aboutContentBottomContainer {
@@ -104,19 +136,36 @@ h2 {
     margin-top: 5vw;
 }
 
-.mediaQueryInverseAbout {
-    flex-direction: column-reverse;
+.arrowsAbout {
+    height: 5vh;
 }
 
-.titleSkillInAbout {
-    color: burlywood;
-    font-size: 6vh;
-    padding-bottom: 3vh;
-    border: 1vh;
-    width: fit-content;
+.handWrite {
+    font-family: "Shadows Into Light", cursive;
+    font-size: 3vh;
+    line-height: 1.2;
+    padding: 5%;
+    margin-left: 1vh;
 }
-.designerExplanationContainer{
+
+.designerExplanationContainer {
+    background-color: rgba(47, 79, 79, 0.3);
+    padding: 5%;
     width: 90vw;
+    margin-top: 2vh;
+    border-radius: 6px;
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
+}
+
+.buttonToCv {
+    color: burlywood;
+    white-space: break-spaces;
+    text-decoration: none;
+}
+.buttonToCv:hover {
+    color: yellow;
+    cursor: pointer;
 }
 
 /* ----- estilos de pagina de portafolio ----- */
@@ -127,7 +176,9 @@ h2 {
     justify-content: space-around;
     width: 90%;
     height: 100vh;
-    margin: auto;
+    margin: 5vh 5% 0 5%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .worksPortfolioLinkContainer {
@@ -146,16 +197,13 @@ h2 {
     color: burlywood;
     margin-top: 2vh;
     gap: 2vh;
-    text-decoration: none;
     font-size: 8vh;
-    background: none;
-    border: none;
     white-space: nowrap;
 }
 
 .worksButton:hover {
     cursor: pointer;
-    color: bisque;
+    color: yellow;
 }
 
 .worksExplanationLine {
@@ -171,6 +219,8 @@ h2 {
     flex-direction: column;
     margin: auto;
     justify-content: space-around;
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
 }
 
 .iconLinkNetworksContainer {
@@ -190,11 +240,10 @@ h2 {
     font-size: 4vh;
     text-decoration: none;
     color: #faebd7;
-    align-items: center;
 }
 
 .buttonLinkNetworks:hover {
-    color: burlywood;
+    color: yellow;
     cursor: pointer;
 }
 
@@ -204,8 +253,12 @@ h2 {
 }
 
 @media (min-width: 768px) {
+    h2 {
+        font-size: 9vw;
+    }
+
     .handWriteToAddIdeas {
-        margin: 7vh 0 0 10vw;
+        margin-top: 7vh;
         font-size: 6vh;
     }
 
@@ -214,12 +267,26 @@ h2 {
     .initBackgroundContainer {
         height: 100vh;
         background-image: url(../img/fondo2.jpg);
+        background-size: 100%;
+        display: grid;
+        grid-template-columns: 2.2fr 1fr;
     }
-    .designDeveloperTitle{
-        font-size: 16vw;}
 
-    h2 {
-        font-size: 7vw;
+    .initContentContainer {
+        width: 60vw;
+        margin-left: 2vw;
+    }
+
+    .designDeveloperTitle {
+        font-size: 16vw;
+    }
+
+    .noPolitePhraseContainer {
+        display: grid;
+        align-content: end;
+        justify-content: start;
+        margin-bottom: 8vw;
+        transform: translateX(-7vw);
     }
 
     /* ---- about ---- */
@@ -233,54 +300,52 @@ h2 {
     .titleAndPharseFullContainer {
         display: flex;
         flex-direction: row;
-        align-items: center;
     }
 
     .cancelLine {
         position: absolute;
-        height: 30vh;
-        width: 41vw;
+        height: 27vh;
+        width: 35vw;
     }
+
     .hacerPorTiContainer {
+        margin-top: 10vh;
         width: fit-content;
-        margin: auto;
-    }
-/*
-    .handWriteBallonContainer {
-        font-size: 5vh;
-
     }
 
-    .handWriteBallonContainer2 {
+    .handWriteToAddIdeas {
         font-size: 4vh;
-        width: 25vw;
     }
 
-    .backgroundImageSectionAbout {
-        height: 25vh;
+    .handWrite {
+        width: 20vw;
+        padding: 5%;
+        margin-left: 1vw;
     }
 
-    .backgroundImageSectionAbout2 {
-        height: 40vh;
-    }
-*/
     .arrowsAbout {
         transform: rotate(-90deg);
         height: 8vw;
     }
-    .designerExplanationContainer{
-    width: 50vw;
-justify-self: end;}
 
-  
+    .designerExplanationContainer {
+        width: 40vw;
+        justify-self: end;
+        margin-top: 0;
+        padding: 2%;
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+    }
 
     /* ---- works ---- */
+    .worksMainContainer{
+    justify-content: start;}
 
     .worksContentContainer {
         display: grid;
         grid-template-columns: 1.5fr 1fr;
         width: 100%;
-        align-items: center;
+        margin-top: 5vh;
     }
 
     /* ---- contact ----*/
@@ -293,6 +358,12 @@ justify-self: end;}
     .iconLinkNetworksContainer {
         justify-content: space-around;
         margin-right: 5vw;
+    }
+
+    .hiddenContactContainer {
+        overflow: hidden;
+        width: 100%;
+        height: 550px;
     }
 
     .buttonLinkNetworks {

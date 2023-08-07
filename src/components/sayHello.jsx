@@ -1,7 +1,8 @@
+import style from './sayHello.module.css'
 
-export function SayHello() {
+export function SayHello({phrase}) {
 
-    const startingPhrase = 'Y muchas cosas más, pero eso esas historias son para un after work un viernes por la tarde.'
+  const startingPhrase = phrase.phrase
 
     function rendeWithDelay(text, delay) {
         const firstLoop = text.replace(/ /g, '\u00a0');
@@ -14,11 +15,11 @@ export function SayHello() {
         
     }
 
-    rendeWithDelay(startingPhrase, 30);
+    setTimeout(()=>{
+      rendeWithDelay(startingPhrase, 30)},2000)
   
-
   return (
-    <p id="myElement"/>
+    <p className={style.sayHelloParagraph} id="myElement"/>
   );
 }
 

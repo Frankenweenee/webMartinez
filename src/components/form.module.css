@@ -21,6 +21,7 @@
 }
 
 .buttonForm {
+  text-align: center;
   border: none;
   margin-top: 2vh;
   background-color: darkslategray;
@@ -34,7 +35,8 @@
 }
 
 .buttonForm:hover{
-background-color:  grey;
+background-color: darkolivegreen;
+color: yellow;
 cursor: pointer;}
 
 @media (min-width: 768px) {

@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+
+.sayHelloParagraph {
+    width: 85vw;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 3vh;
+    color: yellow;
+    overflow-wrap: break-word;
+    margin: auto;
+}
+
+@media (min-width: 768px){
+    .sayHelloParagraph {
+        font-size: 4vh;
+        height: 10vh;
+}}
