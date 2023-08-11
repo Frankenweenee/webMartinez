@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -17,11 +16,23 @@ export function opacityEffectToHide(options) {
 }
 
 export function opacityEffectToShow(options) {
-    const tl = gsap.timeline()
-    tl.fromTo(options.refElementToMove,{opacity: 0,},{opacity: 1,duration: 1,})
-      .fromTo(options.firstTitle,{ y: 300 },{duration: 0.5,ease: "power3.out",y: 0,})
-      .fromTo(options.secondTitle,{ y: 300 },{duration: 0.5,ease: "power3.out",y: 0,})
-};
+    const tl = gsap.timeline();
+    tl.fromTo(
+        options.refElementToMove,
+        { opacity: 0 },
+        { opacity: 1, duration: 1 }
+    )
+        .fromTo(
+            options.firstTitle,
+            { y: 300 },
+            { duration: 0.5, ease: "power3.out", y: 0 }
+        )
+        .fromTo(
+            options.secondTitle,
+            { y: 300 },
+            { duration: 0.5, ease: "power3.out", y: 0 }
+        );
+}
 
 export function translateXgsapEffect(options) {
     gsap.fromTo(
@@ -33,11 +44,11 @@ export function translateXgsapEffect(options) {
             scrollTrigger: {
                 trigger: options.refTrigger,
                 start: options.posStart,
-                markers: {
-            startColor: "violet",
-            endColor: "red",
-            fontSize: "2rem",
-          },
+                /*markers: {
+                    startColor: "violet",
+                    endColor: "red",
+                    fontSize: "2rem",
+                },*/
             },
         }
     );
@@ -101,13 +112,36 @@ export function translateAboutEffect(options) {
             start: options.posStart,
         },
     });
-    tl.fromTo(options.refElementToMove, {x:-400}, {x:0, duration:0.5})
+    tl.fromTo(options.refElementToMove, { x: -400 }, { x: 0, duration: 0.5 });
     tl.fromTo(options.cancelLine, { x: 600 }, { x: 0, duration: 0.5 });
-    tl.fromTo(options.hacerPorTi, { opacity: 0 }, { opacity: 1, duration: 0.5 });
-    tl.fromTo(options.firstBallon,{opacity: 0,},{opacity: 1,duration: 0.2,});
-    tl.fromTo(options.firstArrow,{opacity: 0,},{opacity: 1,duration: 0.2,});
-    tl.fromTo(options.secondBallon,{opacity: 0,},{ opacity: 1,duration: 0.2,});
-    tl.fromTo(options.secondArrow,{opacity: 0,},{opacity: 1,duration: 0.2,});
-    tl.fromTo(options.thirdBallon,{ opacity: 0 },{ opacity: 1, duration: 0.2});
+    tl.fromTo(
+        options.hacerPorTi,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 }
+    );
+    tl.fromTo(
+        options.firstBallon,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2 }
+    );
+    tl.fromTo(
+        options.firstArrow,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2 }
+    );
+    tl.fromTo(
+        options.secondBallon,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2 }
+    );
+    tl.fromTo(
+        options.secondArrow,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2 }
+    );
+    tl.fromTo(
+        options.thirdBallon,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2 }
+    );
 }
-

@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import style from "./worksPopUps.module.css";
 import { PiGithubLogoThin } from "react-icons/pi";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
-import imagen1 from "../img/imagen1.mobile.jpg";
+import imagen1 from "../img/virtualWaiterImage.jpg";
 
 Modal.setAppElement("#root");
 
@@ -38,13 +38,10 @@ export function WorksWide({ mediaQuery }) {
                             Proyecto de una carta virtual para pedir desde la
                             mesa.
                             <br /> Utiliza un backend en
-                            <strong>Django-Python</strong> y un fronend con
-                            <strong>React</strong> así como Axios para el
+                            <b> Django-Python</b> y un fronend con
+                            <b> React</b> así como Axios para el
                             consumo de la Api.
-                        </p>
-                    </div>
-                    <div className={style.imageContainer}>
-                        <img src={imagen1} alt="" />
+                        </p> 
                     </div>
                 </div>
                 <div className={style.technologiesList}>
@@ -60,6 +57,9 @@ export function WorksWide({ mediaQuery }) {
                         </button>
                     </ul>
                 </div>
+                <div className={style.imageContainer}>
+                        <img src={imagen1} alt="" />
+                    </div>
             </div>
         );
     };

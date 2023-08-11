@@ -62,14 +62,6 @@ export function Home() {
         }
         effect.opacityEffectToShow(containerBeginOpacity)
 
-        const mainContainerBackgroundEffect = {
-            refElementToMove: initContainerRef.current,
-            refTrigger: titleAboutMeRef.current,
-            posStart: "center 40%",
-            posEnd: "center 30%",
-        };
-        effect.opacityEffectToHide(mainContainerBackgroundEffect);
-
         // about container
 
         const aboutTitleEffect = {

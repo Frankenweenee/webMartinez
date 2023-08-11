@@ -1,16 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Wire+One&display=swap");
-/* -------------- structure ------------- */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* -------------- mobile structure ------------- */
 
-body {
-    background-color: #06131a;
-    color: azure;
-}
 
 h2 {
     font-family: "Antonio", sans-serif;
@@ -59,7 +50,7 @@ button {
 }
 
 .noPolitePhraseContainer {
-    width: 80vw;
+    width: 85vw;
     margin-left: 2.5%;
     transform: rotate(-2deg);
 }
@@ -153,19 +144,21 @@ button {
     padding: 5%;
     width: 90vw;
     margin-top: 2vh;
-    border-radius: 6px;
+    border-radius: 10px;
     scroll-snap-align: end;
     scroll-snap-stop: always;
+    border: 1px solid whitesmoke;
 }
 
 .buttonToCv {
     color: burlywood;
     white-space: break-spaces;
     text-decoration: none;
-}
-.buttonToCv:hover {
-    color: yellow;
-    cursor: pointer;
+    transition: color 2s ease;
+    &:hover {
+        color: yellow;
+        cursor: pointer;
+    }
 }
 
 /* ----- estilos de pagina de portafolio ----- */
@@ -199,12 +192,11 @@ button {
     gap: 2vh;
     font-size: 8vh;
     white-space: nowrap;
-}
-
-.worksButton:hover {
+transition: color 1s ease;
+&:hover {
     cursor: pointer;
     color: yellow;
-}
+}}
 
 .worksExplanationLine {
     white-space: nowrap;
@@ -287,6 +279,7 @@ button {
         justify-content: start;
         margin-bottom: 8vw;
         transform: translateX(-7vw);
+        width: 15vw;
     }
 
     /* ---- about ---- */
@@ -321,6 +314,7 @@ button {
         width: 20vw;
         padding: 5%;
         margin-left: 1vw;
+
     }
 
     .arrowsAbout {
@@ -335,11 +329,14 @@ button {
         padding: 2%;
         scroll-snap-align: none;
         scroll-snap-stop: normal;
+        font-size: 4.5vh;
     }
 
     /* ---- works ---- */
-    .worksMainContainer{
-    justify-content: start;}
+
+    .worksMainContainer {
+        justify-content: start;
+    }
 
     .worksContentContainer {
         display: grid;
@@ -374,3 +371,8 @@ button {
         font-size: 6vh;
     }
 }
+
+.prueba{
+color: #1a2a32;
+color: #e2e9ea; 
+color: #ca8448;}

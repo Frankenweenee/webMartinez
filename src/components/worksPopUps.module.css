@@ -2,13 +2,16 @@
 
 /* -- wide style __ */
 img {
-    height: 30vh;
+    height: 40vh;
+    border-radius: 5px;
 }
 
 .mainContainer {
     display: flex;
     flex-direction: column;
     max-width: 30vw;
+    position: relative;
+    z-index: 2;
 }
 
 .contentContainer {
@@ -23,19 +26,20 @@ h3 {
 }
 
 .textContainer {
-    width: 45vw;
-    position: absolute;
+    width: 40vw;
     z-index: 2;
     border-radius: 5px;
     align-self: center;
     background-color: rgba(47, 79, 79, 0.8);
     font-family: "Oswald", sans-serif;
     font-size: 3.5vh;
+    margin: 2vh 0 2vh 0;
+    padding-left: 2%;
 }
 
 .imageContainer {
-    position: relative;
-    left: 40vw;
+    position: absolute;
+    left: 25vw;
     z-index: 1;
 }
 
@@ -46,17 +50,17 @@ h3 {
     gap: 3vw;
     font-family: "Antonio", sans-serif;
     font-size: 3.5vh;
+    z-index: 2;
 }
 
 .gitButton {
     all: unset;
-    color: bisque;
+    color: black;
+    &:hover {
+        cursor: pointer;
+        color: black;
+    }
 }
-.gitButton:hover {
-    cursor: pointer;
-    color: burlywood;
-}
-
 /* -- modal style -- */
 
 .modalStyle {
