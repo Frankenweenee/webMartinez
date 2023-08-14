@@ -1,52 +1,61 @@
 .form {
-  display: grid;
-  text-decoration: none;
-  gap: 1.5vh;
-  color: black;
-  border-radius: 4px;
-  align-items: center;
-  margin-top: 3vh;
-  border: none;
+    display: grid;
+    text-decoration: none;
+    gap: 1.6vh;
+    color: black;
+    border-radius: 4px;
+    align-items: center;
+    margin-top: 3vh;
+    border: none;
 }
 
 .form textarea,
 .form input {
-  font-family: "Oswald", sans-serif;
-  border-radius: 4px;
-  font-size: 2.7vh;
-  padding-left: 0.6vh;
+    font-family: "Oswald", sans-serif;
+    border-radius: 10px;
+    font-size: 2.7vh;
+    padding: 0 0 0.5vh 3vw;
+    border: none;
 }
+
 .form textarea {
-  height: 25vh;
+    height: 25vh;
+    border-radius: 10px;
+    border: none;
 }
 
 .buttonForm {
-  text-align: center;
-  border: none;
-  margin-top: 2vh;
-  background-color: darkslategray;
-  font-family: "Oswald", sans-serif;
-  font-size: 2.7vh;
-  padding: 1vh;
-  color: #faebd7;
-  width: 50%;
-  justify-self: end;
-  border-radius: 5px;
+    text-align: center;
+    border: none;
+    margin-top: 2vh;
+    background-color: darkslategray;
+    font-family: "Oswald", sans-serif;
+    font-size: 2.7vh;
+    padding: 1vh;
+    color: #faebd7;
+    width: 50%;
+    justify-self: end;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: darkolivegreen;
+        color: yellow;
+        cursor: pointer;
+    }
 }
 
-.buttonForm:hover{
-background-color: darkolivegreen;
-color: yellow;
-cursor: pointer;}
-
 @media (min-width: 768px) {
- 
-  .buttonForm {
-    padding: 0.5vh;
-  }
+    .buttonForm {
+        padding: 0.5vh;
+    }
 
-  .form {
-    margin-top: 5%;
-    gap: 2vh 0 2vh 0;
-  }
+    .form {
+        margin-top: 5%;
+        gap: 2vh 0 2vh 0;
+    }
+
+    .form textarea,
+    .form input {
+        padding-left: 0.5vw;
+    }
 }

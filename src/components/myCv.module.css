@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Wire+One&display=swap");
+
+.mainContainer {
+    width: 100vh;
+}
+
+.personalCard {
+    display: flex;
+    height: 40vh;
+    width: 36vw;
+    font-family: "Cutive Mono", monospace;
+    font-size: 2.7vh;
+    background-color: rgb(179, 205, 206);
+    color: black;
+    transform: rotate(3deg) translateY(-7vh) translateX(55vw);
+    padding: 4vh 2vw 0 2vw;
+    position: relative;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.photoCv {
+    height: 30vh;
+    margin-left: 0.5vw;
+}
+
+.clip {
+    top: calc(-2vh);
+    left: calc(45vh);
+    height: 28vh;
+    position: absolute;
+}
+
+.cronologyContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10vh;
+    position: relative;
+    left: 55vh;
+    
+}
+
+.line {
+    background-color: white;
+    width: 1px;
+    height: 25vh;
+}
+
+.yearContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.year {
+    text-align: center;
+    width: 10vw;
+}
+
+.jobContainer {
+    width: 30vw;
+    border-radius: 10px;
+    border: 1px solid whitesmoke;
+    padding: 1vh 0.5vw 1vh 0.5vw;
+    margin: 1vh 0 1vh 0;
+    position: absolute;
+    font-family: "Wire One", sans-serif;
+    font-size: 5vh;
+}
+
+.jobContainerRight {
+    left: calc(12vw);
+}
+
+.jobContainerLeft {
+    left: calc(-32vw);
+}
+.titleInJobContainer {
+    text-transform: uppercase;
+    color: burlywood;
+}
+
+.buttonBackHome {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    font-family: "Wire One", sans-serif;
+    font-size: 5vh;
+    color: burlywood;
+    text-decoration: none;
+    top: 2.5vh;
+    left: 1.5vw;
+    transition: color 0.5s ease;
+    &:hover {
+        cursor: pointer;
+        color: bisque;
+    }
+}
+
+.buttonBackIcon {
+    font-size: 6vh;
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        width: 100%;
+    }
+
+    .personalCard {
+        width: 90vw;
+        transform: rotate(2deg) translateY(-3vh) translateX(4vw);
+        margin-top: 2vh;
+        font-size: 2vh;
+        padding-top: 8.5vh;
+        z-index: 1;
+    }
+
+    .clip {
+        height: 20vh;
+        top: calc(0);
+        left: calc(25vh);
+    }
+
+    .cronologyContainer {
+        overflow: hidden;
+        margin-bottom: 10vh;
+        position: relative;
+        left: 0;
+        
+    }
+
+    .line {
+        display: none;
+    }
+
+    .year {
+        width: 100%;
+    }
+
+    .jobContainer {
+        width: 95vw;
+        margin: auto;
+        position: unset;
+        font-size: 3.5vh;
+        padding: 2%;
+    }
+    .buttonBackHome {
+        font-size: 4vh;
+        top: 1vh;
+        transform: translateX(2vh);
+        
+        z-index: 2;
+        color: rgb(164, 113, 46);
+    }
+
+    .buttonBackIcon{
+    font-size: 5vh;}
+}

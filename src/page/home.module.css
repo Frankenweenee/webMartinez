@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Wire+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&Caveat:wght@200&family=Antonio:wght@100&family=Fjalla+One&family=Oswald:wght@200;700&family=Wire+One&display=swap");
 
 /* -------------- mobile structure ------------- */
-
 
 h2 {
     font-family: "Antonio", sans-serif;
@@ -39,7 +38,7 @@ button {
 
 .initContentContainer {
     width: 95%;
-    height: 80vh;
+    height: 70vh;
     margin: auto;
     display: grid;
     align-content: end;
@@ -53,6 +52,13 @@ button {
     width: 85vw;
     margin-left: 2.5%;
     transform: rotate(-2deg);
+}
+
+.enIngles{
+    font-family: "Wire one", sans-serif;
+    color: bisque;
+    font-size: 3.5vh;
+    padding-left: 1vw;
 }
 
 /*------ pagina about  ------ */
@@ -79,13 +85,13 @@ button {
 }
 
 .hacerPorTiContainer {
-    width: 90%;
+    width: 90vw;
     margin-left: 4vw;
 }
 
 .handWriteToAddIdeas {
     font-family: "Shadows Into Light", cursive;
-    font-size: 4vh;
+    font-size: 3vh;
     white-space: nowrap;
     color: yellow;
     transform: rotate(-1deg);
@@ -113,7 +119,7 @@ button {
     justify-items: center;
 }
 
-.backgroundContainerAbouThree {
+.backgroundContainerAboutThree {
     background-image: url("../img/container2.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -121,8 +127,6 @@ button {
 
 .aboutContentBottomContainer {
     display: flex;
-    font-family: "Wire one", sans-serif;
-    font-size: 4vh;
     justify-content: end;
     margin-top: 5vw;
 }
@@ -141,6 +145,8 @@ button {
 
 .designerExplanationContainer {
     background-color: rgba(47, 79, 79, 0.3);
+    font-family: "Wire one", sans-serif;
+    font-size: 3.5vh;
     padding: 5%;
     width: 90vw;
     margin-top: 2vh;
@@ -154,7 +160,7 @@ button {
     color: burlywood;
     white-space: break-spaces;
     text-decoration: none;
-    transition: color 2s ease;
+    transition: color 0.6s ease;
     &:hover {
         color: yellow;
         cursor: pointer;
@@ -168,8 +174,8 @@ button {
     flex-direction: column;
     justify-content: space-around;
     width: 90%;
+    margin: auto;
     height: 100vh;
-    margin: 5vh 5% 0 5%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
 }
@@ -177,28 +183,40 @@ button {
 .worksPortfolioLinkContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
 }
 
-.worksPortfolioLinkContainer p {
-    font-family: "Oswald", sans-serif;
+.worksSpeechContainer {
+    padding: 3%;
+    background-color: rgba(47, 79, 79, 0.3);
+    border-radius: 10px;
+    line-height: 1.2;
+    font-family: "Wire one", sans-serif;
     font-size: 3.5vh;
+    border: 1px solid whitesmoke;
+    width: 90vw;
+    margin-top: 2vh;
 }
+
 
 .worksButton {
     font-family: "Fjalla One", sans-serif;
     color: burlywood;
+    text-decoration: none;
     margin-top: 2vh;
     gap: 2vh;
-    font-size: 8vh;
+    font-size: 7vh;
     white-space: nowrap;
-transition: color 1s ease;
-&:hover {
-    cursor: pointer;
-    color: yellow;
-}}
+    transition: color 1s ease;
+    &:hover {
+        cursor: pointer;
+        color: yellow;
+    }
+}
 
 .worksExplanationLine {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.5vh;
     white-space: nowrap;
 }
 
@@ -232,11 +250,11 @@ transition: color 1s ease;
     font-size: 4vh;
     text-decoration: none;
     color: #faebd7;
-}
-
-.buttonLinkNetworks:hover {
-    color: yellow;
-    cursor: pointer;
+    transition: color 0.8s ease;
+    &:hover {
+        color: yellow;
+        cursor: pointer;
+    }
 }
 
 .reactIcons {
@@ -287,7 +305,7 @@ transition: color 1s ease;
     .aboutContentContainer {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .titleAndPharseFullContainer {
@@ -311,15 +329,18 @@ transition: color 1s ease;
     }
 
     .handWrite {
-        width: 20vw;
+        width: 23vw;
         padding: 5%;
         margin-left: 1vw;
-
+        font-size: 3.7vh;
     }
 
     .arrowsAbout {
         transform: rotate(-90deg);
         height: 8vw;
+    }
+    .aboutContentBottomContainer {
+        margin-top: 3vh;
     }
 
     .designerExplanationContainer {
@@ -335,32 +356,47 @@ transition: color 1s ease;
     /* ---- works ---- */
 
     .worksMainContainer {
-        justify-content: start;
-    }
-
-    .worksContentContainer {
         display: grid;
         grid-template-columns: 1.5fr 1fr;
-        width: 100%;
+        padding-top: 10vh;
+    }
+    
+    .worksSpeechContainer {
+        font-size: 4vh;
         margin-top: 5vh;
+        width: 50vw;
+    }
+
+    .worksButton {
+        font-size: 10vh;
+    }
+    .worksExplanationLine {
+        font-size: 3vh;
+    }
+
+
+    .worksPortfolioLinkContainer {
+        justify-content: center;
     }
 
     /* ---- contact ----*/
 
     .contactMainContainer {
-        display: grid;
-        grid-template-columns: 20vw 40vw;
+        position: relative;
+        display: flex;
+        align-items: end;
     }
 
     .iconLinkNetworksContainer {
-        justify-content: space-around;
-        margin-right: 5vw;
+        width: 75vh;
+        margin-right: 10vw;
     }
 
     .hiddenContactContainer {
+        position: absolute;
         overflow: hidden;
-        width: 100%;
-        height: 550px;
+        rotate: 270deg;
+        left: 0vw;
     }
 
     .buttonLinkNetworks {
@@ -371,8 +407,3 @@ transition: color 1s ease;
         font-size: 6vh;
     }
 }
-
-.prueba{
-color: #1a2a32;
-color: #e2e9ea; 
-color: #ca8448;}

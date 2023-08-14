@@ -1,5 +1,5 @@
 //react libraries
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 //css
 import style from "./home.module.css";
 //images
@@ -12,20 +12,30 @@ import {
     PiLinkedinLogoLight,
     PiGithubLogoLight,
 } from "react-icons/pi";
-
+import { AiFillStar } from "react-icons/ai";
 //components
 import { Form } from "../components/Form";
 import { WorksWide } from "../components/worksPopUps";
-import * as effect from "../components/gsapEffects/gsapEffect";
+import * as effect from "../components/gsapEffect";
 import pdf from "../pdfCv/franciscoMartinezCv.pdf";
 import { SayHello } from "../components/sayHello";
 
 export function Home() {
     /* -- hello Word -- */
+
     console.log(
-        "%c hecho con muchisimo amor por: EX MACHINA",
+        "%c hecho por : EX MACHINA",
         "background:red; color: white;"
     );
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    function setFullscreen() {
+        if (isMobile) {
+            window.scrollTo(0);
+        }
+    }
+
+    window.onload = setFullscreen;
 
     const mediaQuery = window.matchMedia("(max-width: 768px)");
 
@@ -35,6 +45,7 @@ export function Home() {
     const initContainerRef = useRef(null);
     const titleFirstScreenRefA = useRef(null);
     const titleFirstScreenRefB = useRef(null);
+    const esMasChickRef = useRef(null)
     // about container
     const titleAboutMeRef = useRef(null);
     const cancelLineRef = useRef(null);
@@ -52,15 +63,15 @@ export function Home() {
     const emailFormAndLinksRef = useRef(null);
 
     useEffect(() => {
-
         //init container
 
-        const containerBeginOpacity ={
-        refElementToMove: initContainerRef.current,
-        firstTitle: titleFirstScreenRefA.current,
-        secondTitle: titleFirstScreenRefB.current
-        }
-        effect.opacityEffectToShow(containerBeginOpacity)
+        const containerBeginOpacity = {
+            refElementToMove: initContainerRef.current,
+            firstTitle: titleFirstScreenRefA.current,
+            secondTitle: titleFirstScreenRefB.current,
+            joke: esMasChickRef.current
+        };
+        effect.opacityEffectToShow(containerBeginOpacity);
 
         // about container
 
@@ -90,7 +101,7 @@ export function Home() {
 
         //contact container
 
-        if (mediaQuery.matches) {
+       if (mediaQuery.matches) {
             const contactTitleMobileEffect = {
                 refElementToMove: contactTitleRef.current,
                 refTrigger: contactTitleRef.current,
@@ -103,48 +114,21 @@ export function Home() {
                 refTrigger: emailFormAndLinksRef.current,
                 posStart: "center 60%",
             };
-            effect.translateYgsapEffect(contactTitleWideEffect);
+            effect.translateXRightGsapEffect(contactTitleWideEffect);
         }
     }, []);
 
     /* -- about buttons -- */
 
-    const handleClickDownloadCv = ()=>{
-        
-    }
+    const handleClickDownloadCv = () => {};
 
-    /* -- portfolio buttons --*/
+    /* -- writer machine effect -- */
 
-    const [showWorks, setShowWorks] = useState({ prop1: false, prop2: "" });
-
-    const virtualWaiter = <WorksWide mediaQuery={mediaQuery} />;
-
-    const elCamino = mediaQuery.matches ? (
-        <p>soy una chorrada</p>
-    ) : (
-        <p>soy el camino grande</p>
-    );
-
-    const camperWord = mediaQuery.matches ? (
-        <p>soy camper pequeño</p>
-    ) : (
-        <p>soy camper grande</p>
-    );
-
-    const handleClickWaiter = () => {
-        setShowWorks({ prop1: true, prop2: virtualWaiter });
-    };
-    const handleClickElCamino = () => {
-        setShowWorks({ prop1: true, prop2: elCamino });
-    };
-    const handleClickCamper = () => {
-        setShowWorks({ prop1: true, prop2: camperWord });
-    };
-  /* -- writer machne effect -- */
-
-    const phrase = {
-        phrase: "Y mucho más, pero eso... eso es otra historia.",
-    };
+    const phrase = mediaQuery.matches?(
+       {phrase: "Y mucho más, pero eso...\neso es otra historia."}):(
+       {phrase: "Y mucho más, pero eso... eso es otra historia."})
+    
+    
 
     return (
         <>
@@ -156,15 +140,16 @@ export function Home() {
                         <h2
                             className={style.designDeveloperTitle}
                             ref={titleFirstScreenRefA}>
-                            Designer &
+                            DESIGNER <span className={style.andCompany}>&</span>
                         </h2>
                     </div>
                     <div className={style.hiddenContainer}>
                         <h2
                             className={style.designDeveloperTitle}
                             ref={titleFirstScreenRefB}>
-                            Developer
+                            DEVELOPER
                         </h2>
+                        <p className={style.enIngles} ref={esMasChickRef}>(¡En ingles. Que es más chick!)</p> 
                     </div>
                 </div>
                 <div className={style.noPolitePhraseContainer}>
@@ -178,10 +163,11 @@ export function Home() {
                             <div>
                                 <img
                                     className={style.cancelLine}
-                                    src={cancelLine} ref={cancelLineRef}
+                                    src={cancelLine}
+                                    ref={cancelLineRef}
                                 />
                             </div>
-                            <h2 ref={titleAboutMeRef}>.ABOUT ME</h2>
+                            <h2 ref={titleAboutMeRef}>.SOBRE MI</h2>
                         </div>
                     </div>
                     <div
@@ -197,8 +183,11 @@ export function Home() {
                         className={style.backgroundContainerAboutOne}
                         ref={firstBallonRef}>
                         <p className={style.handWrite}>
-                            Tomo conocimientos <b>UI/UX</b> para crear una experiencia,
-                            analizo las posibilides, creo bocetos y estructuras.
+                            Me encanta el <b>UI/UX</b>, boceto, pruebo, busco
+                            soluciones, creo estructuras, analizo las
+                            posibilidades, mirando todo desde la perspectiva del
+                            usuario. Luego peleo mucho buscando el resultado...
+                            eso sí...
                         </p>
                     </div>
                     <img
@@ -213,12 +202,14 @@ export function Home() {
                         <p className={style.handWrite}>
                             Hago uso de tecnologías como:
                             <br />
-                            <br />
-                            <li>JavaScript</li>
-                            <li>HTML</li>
-                            <li>SASS-Css</li>
-                            <li>Python</li>
-                            <li>Django-Rest</li>
+                            <AiFillStar size={16} />
+                            JavaScript <AiFillStar size={16} />
+                            HTML <br />
+                            <AiFillStar size={16} />
+                            SASS-Css <AiFillStar size={16} />
+                            Python <br />
+                            <AiFillStar size={16} />
+                            Django-Rest
                         </p>
                     </div>
                     <img
@@ -228,25 +219,29 @@ export function Home() {
                         alt={"flecha"}
                     />
                     <div
-                        className={style.backgroundContainerAbouThree}
+                        className={style.backgroundContainerAboutThree}
                         ref={thirdBallonRef}>
                         <p className={style.handWrite}>
-                            y lo que obtienes es un resultado eficiente único e
-                            innolvidable
+                            Finalmente llegamos a un producto eficiente e
+                            inolvidable puliendo una y otra vez, buscando
+                            detalles, intentando que todo sea perfecto. Esto es
+                            la artesanía moderna.
                         </p>
                     </div>
                 </div>
                 <div className={style.aboutContentBottomContainer}>
                     <div className={style.designerExplanationContainer}>
                         <p>
-                            Pues eso, tienes un diseñador gráfico e industrial
+                            En resumen, soy un diseñador gráfico e industrial
                             con conocimientos en programación frontend y
-                            backend.{' '}
-                            <a href={'/MiCv'} className={style.buttonToCv}>
-                                 ¿quieres saber más de lo que hago?
+                            backend.{" "}
+                            <a href={"/MiCv"} className={style.buttonToCv}>
+                                ¿Quieres saber más de lo que hago?
                             </a>
-                            <br />O si prefieres puedes descargar{' '}
-                            <button onClick={handleClickDownloadCv} className={style.buttonToCv}>
+                            <br />O si prefieres puedes descargar{" "}
+                            <button
+                                onClick={handleClickDownloadCv}
+                                className={style.buttonToCv}>
                                 mi cv
                             </button>{" "}
                             en .pdf
@@ -255,44 +250,47 @@ export function Home() {
                 </div>
             </div>
             <div className={style.worksMainContainer}>
-                <div
-                    className={style.hiddenContainer}
-                    ref={titleWorksTriggerRef}>
-                    <h2 ref={titleWorksRef}>.WORKS</h2>
+                <div>
+                    <div
+                        className={style.hiddenContainer}
+                        ref={titleWorksTriggerRef}>
+                        <h2 ref={titleWorksRef}>.PROYECTOS</h2>
+                    </div>
+
+                    <div className={style.worksSpeechContainer}><p>He escogido estos proyectos, ya que son todo el recorrido desde la idea misma hasta su finalización. </p>
+                    <p>Son una muestra tanto del diseño gráfico como la creación del código en búsqueda de soluciones que produzcan impacto y a su vez sean funcionales. </p>
+                    <p>Pero sobre todo llevan la impronta de mis sensibilidades y capacidades.</p></div>
                 </div>
-                <div className={style.worksContentContainer}>
-                    <div>{showWorks.prop1 && showWorks.prop2}</div>
-                    <div className={style.worksPortfolioLinkContainer}>
-                        <div>
-                            <button
-                                className={style.worksButton}
-                                onClick={handleClickWaiter}>
-                                Virtual Waiter
-                            </button>
-                            <p className={style.worksExplanationLine}>
-                                -- Website design and development --
-                            </p>
-                        </div>
-                        <div>
-                            <button
-                                className={style.worksButton}
-                                onClick={handleClickElCamino}>
-                                El camino
-                            </button>
-                            <p className={style.worksExplanationLine}>
-                                -- Design, development and backend --
-                            </p>
-                        </div>
-                        <div>
-                            <button
-                                className={style.worksButton}
-                                onClick={handleClickCamper}>
-                                Camper World
-                            </button>
-                            <p className={style.worksExplanationLine}>
-                                -- Design and development --
-                            </p>
-                        </div>
+                <div className={style.worksPortfolioLinkContainer}>
+                    <div>
+                        <a 
+                            className={style.worksButton}
+                            href={'/virtualWaier'}>
+                            Virtual Waiter
+                        </a>
+                        <p className={style.worksExplanationLine}>
+                        -- Design, development and backend --
+                            
+                        </p>
+                    </div>
+                    <div>
+                        <a
+                            className={style.worksButton}
+                            href={'/myWeb'}>My Web
+                        </a>
+                        <p className={style.worksExplanationLine}>
+                        -- Website design and development --
+                        </p>
+                    </div>
+                    <div>
+                        <a
+                            className={style.worksButton}
+                            href={'/diseños'}>
+                            Diseños
+                        </a>
+                        <p className={style.worksExplanationLine}>
+                            -- Design --
+                        </p>
                     </div>
                 </div>
             </div>

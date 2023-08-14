@@ -2,109 +2,71 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import style from "./worksPopUps.module.css";
 import { PiGithubLogoThin } from "react-icons/pi";
-import { IoChevronBackCircleSharp } from "react-icons/io5";
 import imagen1 from "../img/virtualWaiterImage.jpg";
 
 Modal.setAppElement("#root");
 
-export function WorksWide({ mediaQuery }) {
-    const [modalAbierto, setModalAbierto] = useState(false);
+export function WorksWide({ props }) {
+    const item = props;
 
-    const abrirModal = () => {
-        setModalAbierto(true);
-    };
+    const workDescription = (data) => {
+        console.log(data);
 
-    const cerrarModal = () => {
-        setModalAbierto(false);
-    };
-
-    const visitWeb = () =>
-        (window.location.href = "https://estaeslaotrapagina.com/");
-    const visitGithub = () => (window.location.href = "https://github.com/");
-
-    useEffect(() => {
-        if (mediaQuery.matches) {
-            abrirModal();
+        if (data.work === "virtualWaiter") {
+            return (
+                <p>
+                    Proyecto de una carta virtual para pedir desde la mesa. Un
+                    reto personal con el deseo que sea funcional y que sirva a
+                    pequeños negocios.
+                    <br /> Utiliza un backend en
+                    <b> Django-Python</b> y un fronend con
+                    <b> React</b> así como Axios para el consumo de la Api, todo
+                    analizado para ser lo más intuitivo para el cliente interno
+                    y externo. Si tienes un minuto te lo explico mejor.
+                </p>
+            );
+        } else if (data.work === "myWeb") {
+            return (
+                <p>
+                    Mi web es una representación de mi mismo, la idea es dar una
+                    imagen moderna sin perder la elegancia, la organización y la
+                    claridad, sin embargo hago tachones, corrijo.{" "}
+                </p>
+            );
+        } else if (data.work === "mix") {
+            return (
+                <p>
+                    Esta es una selección de pequeños proyectos, tanto
+                    personales como relacionados con la programación, pero
+                    siempre desde el punto de vista del creador
+                </p>
+            );
         }
-    }, [mediaQuery]);
 
-    const Wide = () => {
-        return (
-            <div className={style.mainContainer}>
-                <h3>FullStack Project</h3>
-                <div className={style.contentContainer}>
-                    <div className={style.textContainer}>
-                        <p>
-                            Proyecto de una carta virtual para pedir desde la
-                            mesa.
-                            <br /> Utiliza un backend en
-                            <b> Django-Python</b> y un fronend con
-                            <b> React</b> así como Axios para el
-                            consumo de la Api.
-                        </p> 
-                    </div>
-                </div>
-                <div className={style.technologiesList}>
-                    <ul>React</ul>
-                    <ul>Javascript</ul>
-                    <ul>Html</ul>
-                    <ul>Css</ul>
-                    <ul>
-                        <button
-                            className={style.gitButton}
-                            onClick={visitGithub}>
-                            <PiGithubLogoThin size={30} />
-                        </button>
-                    </ul>
-                </div>
-                <div className={style.imageContainer}>
-                        <img src={imagen1} alt="" />
-                    </div>
-            </div>
-        );
+        return null;
     };
+
     return (
-        <>
-            {mediaQuery.matches ? null : <Wide />}
-            <Modal
-                className={style.modalStyle}
-                appElement={document.getElementById("root")}
-                isOpen={modalAbierto}>
-                <div className={style.mainContainer}>
-                    <button className={style.backButton} onClick={cerrarModal}>
-                        <IoChevronBackCircleSharp />
-                    </button>
-                    <h3>FullStack Project</h3>
-                    <div className={style.contentContainer}>
-                        <div className={style.textContainer}>
-                            <p>
-                                Proyecto de una carta virtual para pedir desde
-                                la mesa.
-                                <br /> Utiliza un backend en
-                                <strong>Django-Python</strong> y un fronend con
-                                <strong>React</strong> así como Axios para el
-                                consumo de la Api.
-                            </p>
-                        </div>
-                        <div className={style.imageContainer}>
-                            <img src={imagen1} alt="" />
-                        </div>
-                    </div>
-                    <div className={style.technologiesList}>
-                        <ul>React</ul>
-                        <ul>Javascript</ul>
-                        <ul>Html</ul>
-                        <ul>Css</ul>
-                        <ul>
-                            <button
-                                className={style.gitButton}
-                                onClick={visitGithub}>
-                                <PiGithubLogoThin size={33} />
-                            </button>
-                        </ul>
-                    </div>
+        <div className={style.mainContainer}>
+            <h3>FullStack Project</h3>
+            <div className={style.contentContainer}>
+                <div className={style.textContainer}>
+                    {workDescription(item)}
                 </div>
-            </Modal>
-        </>
+            </div>
+            <div className={style.technologiesList}>
+                <ul>React</ul>
+                <ul>Javascript</ul>
+                <ul>Html</ul>
+                <ul>Css</ul>
+                <ul>
+                    <a
+                        className={style.gitButton}
+                        href="https://github.com/Frankenweenee/Waiter-App">
+                        <PiGithubLogoThin size={30} />
+                    </a>
+                </ul>
+            </div>
+        </div>
     );
 }

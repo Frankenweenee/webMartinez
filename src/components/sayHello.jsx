@@ -16,7 +16,7 @@ export function SayHello({phrase}) {
     }
 
     setTimeout(()=>{
-      rendeWithDelay(startingPhrase, 30)},2000)
+      rendeWithDelay(startingPhrase, 30)},1000)
   
   return (
     <p className={style.sayHelloParagraph} id="myElement"/>

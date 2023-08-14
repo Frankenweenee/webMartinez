@@ -9,7 +9,7 @@ img {
 .mainContainer {
     display: flex;
     flex-direction: column;
-    max-width: 30vw;
+    width: 100%;
     position: relative;
     z-index: 2;
 }
@@ -38,7 +38,6 @@ h3 {
 }
 
 .imageContainer {
-    position: absolute;
     left: 25vw;
     z-index: 1;
 }
