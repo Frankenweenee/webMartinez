@@ -1,5 +1,7 @@
 //react libraries
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+
 //css
 import style from "./home.module.css";
 //images
@@ -14,8 +16,11 @@ import {
 } from "react-icons/pi";
 import { AiFillStar } from "react-icons/ai";
 //components
+import {
+    VirtualWaiter,
+} from "../components/virtualWaiter";
+import { MyWeb } from "../components/myWeb";
 import { Form } from "../components/Form";
-import { WorksWide } from "../components/worksPopUps";
 import * as effect from "../components/gsapEffect";
 import pdf from "../pdfCv/franciscoMartinezCv.pdf";
 import { SayHello } from "../components/sayHello";
@@ -23,15 +28,15 @@ import { SayHello } from "../components/sayHello";
 export function Home() {
     /* -- hello Word -- */
 
-    console.log(
-        "%c hecho por : EX MACHINA",
-        "background:red; color: white;"
-    );
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    console.log("%c hecho por : EX MACHINA", "background:red; color: white;");
+    const isMobile =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+        );
 
     function setFullscreen() {
         if (isMobile) {
-            window.scrollTo(0);
+            window.scrollTo(0, 1);
         }
     }
 
@@ -45,7 +50,7 @@ export function Home() {
     const initContainerRef = useRef(null);
     const titleFirstScreenRefA = useRef(null);
     const titleFirstScreenRefB = useRef(null);
-    const esMasChickRef = useRef(null)
+    const esMasChickRef = useRef(null);
     // about container
     const titleAboutMeRef = useRef(null);
     const cancelLineRef = useRef(null);
@@ -58,6 +63,7 @@ export function Home() {
     //works container
     const titleWorksTriggerRef = useRef(null);
     const titleWorksRef = useRef(null);
+    const worksSpeechContainerRef = useRef(null);
     // contact container
     const contactTitleRef = useRef(null);
     const emailFormAndLinksRef = useRef(null);
@@ -69,7 +75,7 @@ export function Home() {
             refElementToMove: initContainerRef.current,
             firstTitle: titleFirstScreenRefA.current,
             secondTitle: titleFirstScreenRefB.current,
-            joke: esMasChickRef.current
+            joke: esMasChickRef.current,
         };
         effect.opacityEffectToShow(containerBeginOpacity);
 
@@ -101,7 +107,7 @@ export function Home() {
 
         //contact container
 
-       if (mediaQuery.matches) {
+        if (mediaQuery.matches) {
             const contactTitleMobileEffect = {
                 refElementToMove: contactTitleRef.current,
                 refTrigger: contactTitleRef.current,
@@ -122,14 +128,54 @@ export function Home() {
 
     const handleClickDownloadCv = () => {};
 
+    const [showWork, setShowWork] = useState({ prop1: false, prop2: "" });
+
+    const prop = showWork.prop1;
+
+    const speech = (item) => {
+        if (item === false)
+            return (
+                <>
+                    {" "}
+                    <p>
+                        He escogido estos proyectos, ya que son todo el
+                        recorrido desde la idea misma hasta su finalización.{" "}
+                    </p>
+                    <p>
+                        Son una muestra tanto del diseño gráfico como la
+                        creación del código en búsqueda de soluciones que
+                        produzcan impacto y a su vez sean funcionales.{" "}
+                    </p>
+                    <p>
+                        Pero sobre todo llevan la impronta de mis sensibilidades
+                        y capacidades.
+                    </p>{" "}
+                </>
+            );
+    };
+    
+     //const [elemetToMove, setElemetToMove] = useState()
+    
+        const handleVirtualWaiter = () =>{
+            effect.workBouncelong({refElementToMove:worksSpeechContainerRef.current});
+            effect.workBounce({refElementToMove: titleWorksRef.current});
+            setShowWork({ prop1: true, prop2: <VirtualWaiter /> });
+        }
+        const handlMyWeb = () => {
+            effect.workBouncelong({refElementToMove:worksSpeechContainerRef.current});
+            //effect.workBounce({refElementToMove:worksSpeechContainerRef.current});
+            setShowWork({ prop1: true, prop2: <MyWeb /> });
+        };
+    
+
     /* -- writer machine effect -- */
 
-    const phrase = mediaQuery.matches?(
-       {phrase: "Y mucho más, pero eso...\neso es otra historia."}):(
-       {phrase: "Y mucho más, pero eso... eso es otra historia."})
-    
-    
-
+    const phrase = mediaQuery.matches
+        ? { phrase: "Y mucho más, pero eso...\neso es otra historia." }
+        : { phrase: "Y mucho más, pero eso... eso es otra historia." };
+    const prueba = () => {
+        console.log(showWork.prop1);
+    };
     return (
         <>
             <div
@@ -149,7 +195,9 @@ export function Home() {
                             ref={titleFirstScreenRefB}>
                             DEVELOPER
                         </h2>
-                        <p className={style.enIngles} ref={esMasChickRef}>(¡En ingles. Que es más chick!)</p> 
+                        <p className={style.enIngles} ref={esMasChickRef}>
+                            (¡En ingles. Que es más chic!)
+                        </p>
                     </div>
                 </div>
                 <div className={style.noPolitePhraseContainer}>
@@ -250,42 +298,56 @@ export function Home() {
                 </div>
             </div>
             <div className={style.worksMainContainer}>
-                <div>
+                <div className={style.worksContainerTitleAndSpeech}>
                     <div
                         className={style.hiddenContainer}
                         ref={titleWorksTriggerRef}>
                         <h2 ref={titleWorksRef}>.PROYECTOS</h2>
                     </div>
 
-                    <div className={style.worksSpeechContainer}><p>He escogido estos proyectos, ya que son todo el recorrido desde la idea misma hasta su finalización. </p>
-                    <p>Son una muestra tanto del diseño gráfico como la creación del código en búsqueda de soluciones que produzcan impacto y a su vez sean funcionales. </p>
-                    <p>Pero sobre todo llevan la impronta de mis sensibilidades y capacidades.</p></div>
+                    <div
+                        className={style.worksSpeechContainer}
+                        ref={worksSpeechContainerRef}>
+                        {speech(prop)}
+                        {showWork.prop1 && showWork.prop2}
+                    </div>
                 </div>
                 <div className={style.worksPortfolioLinkContainer}>
                     <div>
-                        <a 
-                            className={style.worksButton}
-                            href={'/virtualWaier'}>
-                            Virtual Waiter
-                        </a>
+                        {mediaQuery.matches ? (
+                            <Link className={style.worksButton} to={"/works1"}>
+                                Virtual Waiter
+                            </Link>
+                        ) : (
+                            <button
+                                className={style.worksButton}
+                                onClick={handleVirtualWaiter}>
+                                
+                                Virtual Waiter
+                            </button>
+                        )}
                         <p className={style.worksExplanationLine}>
-                        -- Design, development and backend --
-                            
+                            -- Design, development and backend --
                         </p>
                     </div>
                     <div>
-                        <a
-                            className={style.worksButton}
-                            href={'/myWeb'}>My Web
-                        </a>
+                        {mediaQuery.matches ? (
+                            <Link className={style.worksButton} to={"/works2"}>
+                                My Web
+                            </Link>
+                        ) : (
+                            <button
+                                className={style.worksButton}
+                               onClick={handlMyWeb}>
+                               my Web
+                            </button>
+                        )}
                         <p className={style.worksExplanationLine}>
-                        -- Website design and development --
+                            -- Website design and development --
                         </p>
                     </div>
                     <div>
-                        <a
-                            className={style.worksButton}
-                            href={'/diseños'}>
+                        <a className={style.worksButton} href={"/diseños"}>
                             Diseños
                         </a>
                         <p className={style.worksExplanationLine}>

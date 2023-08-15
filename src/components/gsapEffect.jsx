@@ -13,14 +13,14 @@ export function opacityEffectToShow(options) {
         .fromTo(
             options.firstTitle,
             { y: 300 },
-            { duration: 0.4, ease: "power3.out", y: 0 }
+            { duration: 1.5, ease: "power3.out", y: 0 }
         )
         .fromTo(
             options.secondTitle,
             { y: 300 },
-            { duration: 0.4, ease: "power3.out", y: 0 }
+            { duration: 1.5, ease: "power3.out", y: 0 }
         )
-        .fromTo(options.joke, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+        .fromTo(options.joke, { opacity: 0 }, { opacity: 1, duration: 1.5 });
 }
 
 export function translateXgsapEffect(options) {
@@ -90,41 +90,70 @@ export function translateAboutEffect(options) {
         },
     });
     tl.fromTo(options.refElementToMove, { x: -400 }, { x: 0, duration: 0.6 });
-    tl.fromTo(options.cancelLine, { x: 600 }, { x: 0, duration: 0.5 }, "-=75%");
+    tl.fromTo(options.cancelLine, { x: 600 }, { x: 0, duration: 0.5 }, "-=90%");
     tl.fromTo(
         options.hacerPorTi,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4 },
-        "-=75%"
+        { opacity: 1, duration: 1.5 },
+        "-=50%"
     );
     tl.fromTo(
         options.firstBallon,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4 },
-        "-=75%"
+        { opacity: 1, duration: 1.5 },
+        "-=90%"
     );
     tl.fromTo(
         options.firstArrow,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4 },
-        "-=75%"
+        { opacity: 1, duration: 1.5 },
+        "-=90%"
     );
     tl.fromTo(
         options.secondBallon,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4 },
-        "-=75%"
+        { opacity: 1, duration: 1.5 },
+        "-=90%"
     );
     tl.fromTo(
         options.secondArrow,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4 },
-        "-=75%"
+        { opacity: 1, duration: 1.5 },
+        "-=90%"
     );
     tl.fromTo(
         options.thirdBallon,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4 },
-        "-=75%"
+        { opacity: 1, duration: 1.5 },
+        "-=90%"
     );
+}
+
+export function workBounce(options) {
+    gsap.fromTo(
+        options.refElementToMove,
+        { y: 0 },
+        { y: -200, ease: "power3.out", duration: 0.5 }
+    );
+}
+
+export function workBouncelong(options) {
+    const tl = gsap.timeline();
+    tl.fromTo(
+        options.refElementToMove,
+        { opactity: 0 },
+        {
+            opacity: 1,
+            duration: 1,
+        }
+    );
+    tl.fromTo(
+        options.refElementToMove,
+        { y: 400 },
+        {
+            y: "-28%",
+            ease: "power3.out",
+        },  "-=200%"
+    ) 
+ 
 }

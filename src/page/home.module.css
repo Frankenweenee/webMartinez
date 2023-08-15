@@ -161,23 +161,31 @@ button {
     white-space: break-spaces;
     text-decoration: none;
     transition: color 0.6s ease;
+    animation: blink 2s infinite ease-in-out;
     &:hover {
-        color: yellow;
         cursor: pointer;
+        color: bisque;
     }
 }
-
+@keyframes blink{
+    50% {color: #e3c6a0}
+}
 /* ----- estilos de pagina de portafolio ----- */
 
 .worksMainContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 90%;
     margin: auto;
     height: 100vh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+}
+
+.worksContainerTitleAndSpeech{
+display: flex;
+flex-direction: column;
 }
 
 .worksPortfolioLinkContainer {
@@ -283,8 +291,13 @@ button {
     }
 
     .initContentContainer {
-        width: 60vw;
+        height: 70vh;
+        width: 65vw;
         margin-left: 2vw;
+        margin-top: 10vh;
+        inline-size: 1;
+    
+        
     }
 
     .designDeveloperTitle {

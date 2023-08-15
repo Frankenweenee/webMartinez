@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?&family=Antonio:wght@100&family=Wire+One&display=swap");
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+
+}
+
+h3 {
+    font-size: 5vh;
+    font-family: "Antonio", sans-serif;
+    color: burlywood;
+}
+
+.textContainer {
+    margin-top: 2vh;
+    font-family: "Wire One", sans-serif;
+    font-size: 4vh;
+}
+
+
+.technologiesList {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+    gap: 3vw;
+    font-family: "Antonio", sans-serif;
+    font-size: 3.5vh;
+}
+
+.gitButton {
+    all: unset;
+    color: burlywood;
+    animation: blink 2s infinite ease-in-out;
+    &:hover {
+        cursor: pointer;
+        color: bisque;
+    }
+}
+@keyframes blink{
+    50% {color: #e3c6a0}
+}
+/* -- modal style -- */
+
+.modalStyle {
+    background-color: #03030e;
+    height: 100%;
+    width: 100%;
+    align-content: space-around;
+}
+
+.backButton {
+    all: unset;
+    margin-bottom: 5vw;
+    font-size: 5vh;
+    color: bisque;
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        height: 90%;
+        margin:auto;
+    }
+
+    .buttonBackHome {
+        display: flex;
+        align-items: center;
+        font-family: "Wire One", sans-serif;
+        font-size: 4vh;
+        color: burlywood;
+        text-decoration: none;
+        margin: 1.5vh 0 0 2vw;
+        transition: color 0.5s ease;
+        &:hover {
+            cursor: pointer;
+            color: bisque;
+        }
+    }
+    
+    .technologiesList {
+        justify-content: center;
+        margin-top: 3vh;
+    }
+
+
+    .textContainer {
+        width: 95vw;
+        margin-top: 2vh;
+        font-family: "Oswald", sans-serif;
+        font-size: 2.8vh;
+    }
+    
+
+
+}

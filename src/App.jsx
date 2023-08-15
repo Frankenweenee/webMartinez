@@ -1,7 +1,8 @@
 import {Route, Routes, BrowserRouter} from 'react-router-dom'
 import { Home } from "./page/home";
 import { MyCv } from './components/myCv';
-import { CvForm } from './components/cVcreator/cvForm';
+import { VirtualWaiterMobile } from './components/virtualWaiter';
+import { MyWebMobile } from './components/myWeb';
 import ErrorBoundary from './errors/errors';
 
 function App() {
@@ -9,9 +10,10 @@ function App() {
     <ErrorBoundary>
     <BrowserRouter>
     <Routes>
-    <Route path='/cv' element={<CvForm />}></Route>
-    <Route path='/*' element={<Home />}></Route>
+    <Route path='/' element={<Home />}></Route>
     <Route path='/miCv' element={<MyCv/>}></Route>
+   <Route path='/works1' element={<VirtualWaiterMobile/>}></Route>
+   <Route path='/works2' element={<MyWebMobile/>}></Route>
     </Routes>
     </BrowserRouter>
     </ErrorBoundary>
