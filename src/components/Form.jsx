@@ -18,8 +18,8 @@ export function Form() {
         <input placeholder='Asunto' className={style.input} name='Asunto'/>
         <textarea placeholder='Cuentame algo' className={style.textarea} name='Mensaje'/>
         <button className={style.buttonForm} type='submit' onClick={notify}>ENVIAR</button>
-        <input type='hidden' name='_next' value='http://192.168.0.15:5173' />
-        <input type='hidden' name='_captcha' value='false'/>
+        <input type='hidden' name='_next' value='http://www.exmachina.es' />
+        <input type='hidden' name='_captcha' value='true'/>
       </form>
       </div>
     );

@@ -1,7 +1,9 @@
+//libraries
 import { useRef } from "react";
-
+import { HashLink as Link } from 'react-router-hash-link';
+//styles
 import style from "./works.module.css";
-
+//icons
 import { PiGithubLogoThin } from "react-icons/pi";
 import { CiCircleChevLeft } from "react-icons/ci";
 
@@ -23,11 +25,12 @@ const Content = () => {
                 </p>
                 <p>
                     ¿Quieres ver como está hecho?{" "}
-                    <a
+                    <Link
                         className={style.gitButton}
-                        href="https://github.com/Frankenweenee/webMartinez">
+                        to="https://github.com/Frankenweenee/webMartinez.git"
+                        target="_blank">
                         <PiGithubLogoThin size={30} />
-                    </a>
+                    </Link>
                 </p>
             </div>
             <div className={style.technologiesList}>
@@ -53,9 +56,9 @@ export function MyWeb() {
 export function MyWebMobile() {
     return (
         <>
-            <a href={"/"} className={style.buttonBackHome}>
+            <Link to={"/#works"} className={style.buttonBackHome}>
                 <CiCircleChevLeft className={style.buttonBackIcon} /> To Home
-            </a>
+            </Link>
 
             <Content />
         </>

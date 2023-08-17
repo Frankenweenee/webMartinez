@@ -1,7 +1,7 @@
 //react libraries
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-
+import toast, { Toaster } from 'react-hot-toast'
+import { HashLink as Link } from 'react-router-hash-link';
 //css
 import style from "./home.module.css";
 //images
@@ -24,6 +24,7 @@ import { Form } from "../components/Form";
 import * as effect from "../components/gsapEffect";
 import pdf from "../pdfCv/franciscoMartinezCv.pdf";
 import { SayHello } from "../components/sayHello";
+import { Projects } from "../components/Projects";
 
 export function Home() {
     /* -- hello Word -- */
@@ -69,6 +70,7 @@ export function Home() {
     const emailFormAndLinksRef = useRef(null);
 
     useEffect(() => {
+
         //init container
 
         const containerBeginOpacity = {
@@ -126,8 +128,6 @@ export function Home() {
 
     /* -- about buttons -- */
 
-    const handleClickDownloadCv = () => {};
-
     const [showWork, setShowWork] = useState({ prop1: false, prop2: "" });
 
     const prop = showWork.prop1;
@@ -154,28 +154,29 @@ export function Home() {
             );
     };
     
-     //const [elemetToMove, setElemetToMove] = useState()
     
         const handleVirtualWaiter = () =>{
             effect.workBouncelong({refElementToMove:worksSpeechContainerRef.current});
             effect.workBounce({refElementToMove: titleWorksRef.current});
             setShowWork({ prop1: true, prop2: <VirtualWaiter /> });
         }
-        const handlMyWeb = () => {
+        const handleMyWeb = () => {
             effect.workBouncelong({refElementToMove:worksSpeechContainerRef.current});
-            //effect.workBounce({refElementToMove:worksSpeechContainerRef.current});
+            effect.workBounce({refElementToMove:titleWorksRef.current});
             setShowWork({ prop1: true, prop2: <MyWeb /> });
         };
+        const handleDesigns = ()=>{
+            effect.workBouncelong({refElementToMove:worksSpeechContainerRef.current}); 
+            setShowWork({ prop1: true, prop2: <Projects /> });}
     
 
     /* -- writer machine effect -- */
-
+    
     const phrase = mediaQuery.matches
-        ? { phrase: "Y mucho más, pero eso...\neso es otra historia." }
-        : { phrase: "Y mucho más, pero eso... eso es otra historia." };
-    const prueba = () => {
-        console.log(showWork.prop1);
-    };
+    ? { phrase: "Y mucho más, pero eso...\neso es otra historia." }
+    : { phrase: "Y mucho más, pero eso... eso es otra historia." };
+    
+    const success = () => toast.success('Cv descargado');
     return (
         <>
             <div
@@ -200,11 +201,10 @@ export function Home() {
                         </p>
                     </div>
                 </div>
-                <div className={style.noPolitePhraseContainer}>
-                    <SayHello phrase={phrase} />
+                <div className={style.noPolitePhraseContainer}> <SayHello phrase={phrase} />
                 </div>
             </div>
-            <div className={style.aboutMainContainer}>
+            <div id='about' className={style.aboutMainContainer}>
                 <div className={style.titleAndPharseFullContainer}>
                     <div className={style.titleAboutMeContainer}>
                         <div className={style.hiddenContainer}>
@@ -283,21 +283,26 @@ export function Home() {
                             En resumen, soy un diseñador gráfico e industrial
                             con conocimientos en programación frontend y
                             backend.{" "}
-                            <a href={"/MiCv"} className={style.buttonToCv}>
-                                ¿Quieres saber más de lo que hago?
-                            </a>
+                            <Link to={"/miCv#top"} className={style.buttonToCv}>
+                                Aquí tienes mi Cv online
+                            </Link>
                             <br />O si prefieres puedes descargar{" "}
-                            <button
-                                onClick={handleClickDownloadCv}
-                                className={style.buttonToCv}>
+                            <a
+                                className={style.buttonToCv}
+                                onClick={success}
+                                    href={pdf} download="Cv_Francisco_Martinez.pdf" >
                                 mi cv
-                            </button>{" "}
+                            </a>{" "}
                             en .pdf
                         </p>
                     </div>
+                    <Toaster
+  position="bottom-right"
+  reverseOrder={false}
+/>
                 </div>
             </div>
-            <div className={style.worksMainContainer}>
+            <div id='works' className={style.worksMainContainer}>
                 <div className={style.worksContainerTitleAndSpeech}>
                     <div
                         className={style.hiddenContainer}
@@ -315,14 +320,13 @@ export function Home() {
                 <div className={style.worksPortfolioLinkContainer}>
                     <div>
                         {mediaQuery.matches ? (
-                            <Link className={style.worksButton} to={"/works1"}>
+                            <Link className={style.worksButton} to={"/virtual_waiter"}>
                                 Virtual Waiter
                             </Link>
                         ) : (
                             <button
                                 className={style.worksButton}
                                 onClick={handleVirtualWaiter}>
-                                
                                 Virtual Waiter
                             </button>
                         )}
@@ -332,13 +336,13 @@ export function Home() {
                     </div>
                     <div>
                         {mediaQuery.matches ? (
-                            <Link className={style.worksButton} to={"/works2"}>
+                            <Link className={style.worksButton} to={"/mi_web"}>
                                 My Web
                             </Link>
                         ) : (
                             <button
                                 className={style.worksButton}
-                               onClick={handlMyWeb}>
+                               onClick={handleMyWeb}>
                                my Web
                             </button>
                         )}
@@ -347,9 +351,17 @@ export function Home() {
                         </p>
                     </div>
                     <div>
-                        <a className={style.worksButton} href={"/diseños"}>
-                            Diseños
-                        </a>
+                    {mediaQuery.matches ? (
+                            <Link className={style.worksButton} to={"/mini_proyectos"}>
+                                Proyectos
+                            </Link>
+                        ) : (
+                            <button
+                                className={style.worksButton}
+                               onClick={handleDesigns}>
+                               Proyectos
+                            </button>
+                        )}
                         <p className={style.worksExplanationLine}>
                             -- Design --
                         </p>

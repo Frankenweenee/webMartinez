@@ -3,8 +3,6 @@
 .mainContainer {
     display: flex;
     flex-direction: column;
-    width: 95%;
-
 }
 
 h3 {
@@ -43,23 +41,10 @@ h3 {
 }
 /* -- modal style -- */
 
-.modalStyle {
-    background-color: #03030e;
-    height: 100%;
-    width: 100%;
-    align-content: space-around;
-}
-
-.backButton {
-    all: unset;
-    margin-bottom: 5vw;
-    font-size: 5vh;
-    color: bisque;
-}
-
 @media (max-width: 768px) {
     .mainContainer {
         height: 90%;
+        width: 95vw;
         margin:auto;
     }
 

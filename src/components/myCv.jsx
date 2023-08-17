@@ -1,16 +1,21 @@
+//libraries
+import { HashLink as Link } from 'react-router-hash-link';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from "react";
+import { gsap } from "gsap";
+//styles
 import style from "./myCv.module.css";
+//images
 import photoCv from "../img/photoCv.jpg";
 import clip from "../img/paperClip.svg";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+//data
 import data from "./jobs.json";
-import { useEffect } from "react";
-import { CiCircleChevLeft, CiHospital1 } from "react-icons/ci";
+//icons
+import { CiCircleChevLeft } from "react-icons/ci";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function MyCv() {
-    const mediaQuery = window.matchMedia("(max-width:768px)");
     const jobs = data;
 
     function handleId(item) {
@@ -47,10 +52,11 @@ export function MyCv() {
     };
 
     return (
-        <div className={style.mainContainer}>
-            <a href={"/"} className={style.buttonBackHome}>
+        <>
+        <div id="top" className={style.mainContainer}>
+            <Link to={"/#about"} className={style.buttonBackHome}>
                 <CiCircleChevLeft className={style.buttonBackIcon} /> To Home
-            </a>
+            </Link>
             <div className={style.personalCard}>
                 <div className={style.personalCardInfo}>
                     <p>
@@ -65,7 +71,7 @@ export function MyCv() {
                         <b>PROFESIÓN:</b> Diseñador y desarrollador
                     </p>
                     <br />
-                    <p>IDIOMAS: Español, Ingles e Italiano en alto nivel.</p>
+                    <p><b>IDIOMAS:</b> Español, Ingles e Italiano en alto nivel.</p>
                 </div>
                 <img
                     className={style.photoCv}
@@ -75,7 +81,7 @@ export function MyCv() {
                 <img className={style.clip} src={clip} />
             </div>
             <main className={style.cronologyContainer}>
-                <h2>CRONOLOGIA</h2>
+                <h3 className={style.title}>QUE HE HECHO</h3>
                 <div className={style.line}></div>
                 {jobs.map((item) => (
                     <div className={style.yearContainer} key={item.id}>
@@ -108,5 +114,7 @@ export function MyCv() {
                 ))}
             </main>
         </div>
+         
+         </>
     );
 }

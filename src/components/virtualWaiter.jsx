@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
+import { HashLink as Link } from "react-router-hash-link";
 
 import style from "./works.module.css";
 
@@ -29,17 +30,22 @@ const Content = () => {
                     Consume a través de <b>Aixos</b> un <b>API</b> creada en{" "}
                     <b>Django</b>. En front utilizo <b>React</b> y{" "}
                     <b>JavaScript</b> para darle estructura.
-                    <a className={style.gitButton} href={"https://exmachina.es"}>{" "}
+                    <Link
+                        className={style.gitButton}
+                        to={"https://exmachina.es/carta"}
+                        target="_blank">
+                        {" "}
                         ¿Quieres probar como funciona?
-                    </a>
+                    </Link>
                 </p>
                 <p>
-                    ¿O ver como está hecho?
-                    <a
+                    ¿O ver como está hecho?{" "}
+                    <Link
                         className={style.gitButton}
-                        href="https://github.com/Frankenweenee/Waiter-App">
+                        to="https://github.com/Frankenweenee/Waiter-App.git" 
+                        target="_blank">
                         <PiGithubLogoThin size={30} />
-                    </a>
+                    </Link>
                 </p>
             </div>
             <div className={style.technologiesList}>
@@ -57,7 +63,7 @@ export function VirtualWaiter() {
     const toMoveRef = useRef(null);
 
     return (
-        <div ref={toMoveRef}>
+        <div>
             <Content />
         </div>
     );
@@ -66,9 +72,9 @@ export function VirtualWaiter() {
 export function VirtualWaiterMobile() {
     return (
         <>
-            <a href={"/"} className={style.buttonBackHome}>
+            <Link to={"/#works"} className={style.buttonBackHome}>
                 <CiCircleChevLeft className={style.buttonBackIcon} /> To Home
-            </a>
+            </Link>
 
             <Content />
         </>

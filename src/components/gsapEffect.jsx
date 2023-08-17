@@ -13,12 +13,12 @@ export function opacityEffectToShow(options) {
         .fromTo(
             options.firstTitle,
             { y: 300 },
-            { duration: 1.5, ease: "power3.out", y: 0 }
+            { duration: 0.4, ease: "power3.out", y: 0 }
         )
         .fromTo(
             options.secondTitle,
             { y: 300 },
-            { duration: 1.5, ease: "power3.out", y: 0 }
+            { duration: 0.4, ease: "power3.out", y: 0 }
         )
         .fromTo(options.joke, { opacity: 0 }, { opacity: 1, duration: 1.5 });
 }
@@ -130,9 +130,8 @@ export function translateAboutEffect(options) {
 }
 
 export function workBounce(options) {
-    gsap.fromTo(
+    gsap.to(
         options.refElementToMove,
-        { y: 0 },
         { y: -200, ease: "power3.out", duration: 0.5 }
     );
 }
@@ -151,9 +150,9 @@ export function workBouncelong(options) {
         options.refElementToMove,
         { y: 400 },
         {
-            y: "-28%",
+            y: "-21%",
             ease: "power3.out",
-        },  "-=200%"
+        },  "-=150%"
     ) 
  
 }

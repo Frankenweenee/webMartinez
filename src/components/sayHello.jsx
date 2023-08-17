@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import style from './sayHello.module.css'
 
 export function SayHello({phrase}) {
 
-  const startingPhrase = phrase.phrase
+  
 
+  useEffect(() => {
+    const startingPhrase = phrase.phrase
+   
     function rendeWithDelay(text, delay) {
         const firstLoop = text.replace(/ /g, '\u00a0');
         const caracter = firstLoop.split("");
@@ -17,6 +21,9 @@ export function SayHello({phrase}) {
 
     setTimeout(()=>{
       rendeWithDelay(startingPhrase, 30)},1000)
+
+    }, [])
+  
   
   return (
     <p className={style.sayHelloParagraph} id="myElement"/>
